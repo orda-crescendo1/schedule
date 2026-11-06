@@ -392,12 +392,19 @@ button.rtag:active{filter:brightness(.92)}
 .adm-head b{font-size:1rem} .adm-head span{font-size:.72rem;opacity:.85}
 .lauth.admin-mode .seg:not(.typeseg){display:none}
 .lauth.admin-mode #fId{background:#f3ece0;color:#2a2118;font-weight:700}
+.addr-box{display:flex;align-items:center;gap:.5rem;border:1.5px solid var(--line);border-radius:.75rem;padding:.55rem .6rem .55rem .8rem;background:#fff;min-height:3rem}
+.addr-box .muted{flex:1;font-size:.82rem} .addr-sel{flex:1;min-width:0;display:flex;flex-direction:column}
+.addr-sel b{font-size:.92rem;color:var(--navy);word-break:keep-all} .addr-sel small{font-size:.72rem;color:var(--sub)}
+.addr-btn{flex:none;display:inline-flex;align-items:center;gap:.2rem} .addr-btn .brq-ico{color:#fff} .addr-btn svg{width:.95rem;height:.95rem}
+.addr-find{height:24rem;border:1.5px solid var(--navy);border-radius:.75rem;overflow:hidden;margin-top:.5rem;background:#fff}
+.addr-box+input,.addr-find+input{margin-top:.5rem}
 /* ───── rev09: 지점 ───── */
 .brand-txt{min-width:0;flex:1}
 .bn-row{display:flex;align-items:center;gap:.3rem;min-width:0}
 .bn-row b{white-space:nowrap;overflow:hidden;text-overflow:clip;min-width:0}
 .brand b.n10,.bri-t b.n10,.nprev.n10,.ro b.n10,.vf-b b.n10{font-size:.92em} .brand b.n12,.bri-t b.n12,.nprev.n12,.ro b.n12,.vf-b b.n12{font-size:.8em;letter-spacing:-.02em}
-.bpick{flex:none;width:1.7rem;height:1.7rem;border-radius:.45rem;background:#fdecee;color:var(--red);font-size:.8rem;display:grid;place-items:center;border:1.5px solid #f3c3c7}
+.bpick{flex:none;width:1.7rem;height:1.7rem;border-radius:.45rem;background:var(--soft);color:var(--navy);font-size:.8rem;display:grid;place-items:center;border:0}
+.bpick:active{background:var(--line)}
 .bsearch{flex:none;width:1.7rem;height:1.7rem;border-radius:.45rem;background:var(--soft);color:var(--navy);display:grid;place-items:center}
 .bsearch svg{width:.95rem;height:.95rem}
 .hours-line{display:block;font-size:.72rem;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -713,7 +720,7 @@ button.rtag:active{filter:brightness(.92)}
 <!-- 일정 보내기 -->
 <div class="mbg" id="mSend"><div class="modal">
   <div class="mhead"><h2>↗ 일정 보내기</h2><button class="mclose" data-close="mSend">✕</button></div>
-  <div class="kwarn" id="kakaoWarn" hidden>⚠ 지금 <b>카카오톡 안의 화면</b>에서 열려 있어서 사진 보내기가 안 돼요. <button type="button" class="btn sm primary" id="kakaoOut">Chrome / Safari로 열기</button></div>
+  <div class="kwarn" id="kakaoWarn" hidden>⚠ 지금 <b>카카오톡 안의 화면</b>이라 바로 보내기가 안 돼요.<br>① 아래 <b>사진을 길게 눌러 [저장]</b> → 카카오톡 채팅에서 사진으로 보내기<br>② 또는 <button type="button" class="btn sm primary" id="kakaoOut">Chrome / Safari로 열기</button></div>
   <div class="shot" id="shot"></div>
   <button class="app-btn kakao" id="toKakao" disabled><span class="ico">💬</span><span><b>카카오톡으로 보내기</b><small>나와의 채팅 · 친구 · 즐겨찾기에서 골라요</small></span></button>
   <button class="app-btn insta" id="toInsta" disabled><span class="ico">📷</span><span><b>인스타그램으로 보내기</b><small>DM 친구 선택 · 스토리에 보내요</small></span></button>
@@ -1097,7 +1104,7 @@ function renderBrand(){
   var bn=$('#brandName'); bn.textContent=st.title; bn.className=nameCls(st.title); $('#calBrand').textContent=st.title;
   var hl=$('#brandSub'); hl.textContent = S.bid ? hoursText(st.hours) : '대회 · 연습 일정표'; hl.title=hl.textContent;
   var ico=$('#brandIco'); ico.classList.toggle('haslogo', !!st.logo); ico.style.backgroundImage = st.logo ? 'url("'+st.logo+'")' : '';
-  $('#btnBranch').hidden = $('#btnBranchQ').hidden = !S.user;
+  $('#btnBranch').hidden = !S.user; $('#btnBranchQ').hidden = true;   // 검색은 ▼ 목록 안에서
   renderFoot(); document.title=st.title+' 일정표';
   $('#legend').innerHTML=''; ['o','g'].forEach(function(c){ $('#legend').append(h('span',null,h('span',{class:'dot '+c}), L(c))); });
 }
@@ -1797,10 +1804,25 @@ function bizOk(n){ n=String(n).replace(/[^0-9]/g,''); if(n.length!==10) return f
   for(var i=0;i<9;i++) s+= (+n[i])*w[i]; s+= Math.floor((+n[8])*5/10); return (10 - s%10)%10 === +n[9]; }
 function birthOk(b){ b=String(b); if(!/^\d{6}$/.test(b)) return false; var yy=+b.slice(0,2), mm=+b.slice(2,4), dd=+b.slice(4,6), cy=new Date().getFullYear()%100;
   var y=(yy>cy?1900:2000)+yy, d=new Date(y,mm-1,dd); return d.getFullYear()===y && d.getMonth()===mm-1 && d.getDate()===dd && (new Date().getFullYear()-y)>=19; }
+var SV_SEARCH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
+/* 주소 찾기: 다음(카카오) 우편번호 서비스 — 무료, 키 필요 없음. 도로명을 치면 아래로 후보가 쭉 나와요 */
+var postcodeP=null;
+function loadPostcode(){ if(window.daum && daum.Postcode) return Promise.resolve();
+  return postcodeP || (postcodeP=new Promise(function(ok,no){ var sc=document.createElement('script'); sc.src='https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js'; sc.onload=ok; sc.onerror=function(){ postcodeP=null; no(); }; document.head.appendChild(sc); })); }
+function openAddrSearch(el, done){
+  if(!el) return;
+  loadPostcode().then(function(){ el.innerHTML='';
+    new daum.Postcode({ width:'100%', height:'100%', hideMapBtn:true, hideEngBtn:true, autoMappingRoad:true,
+      oncomplete:function(d){ var a=d.roadAddress||d.jibunAddress||d.address; if(d.buildingName) a+=' ('+d.buildingName+')'; done({addr:a, zip:d.zonecode||''}); } }).embed(el, {autoClose:false});
+  }).catch(function(){   // 인터넷이 안 될 때: 직접 입력
+    el.innerHTML=''; var i=h('input',{class:'ef-in', placeholder:'주소 검색을 열 수 없어요. 주소를 직접 적어 주세요'});
+    el.append(h('div',{style:'padding:.6rem'}, i, h('button',{type:'button', class:'btn sm primary', style:'margin-top:.4rem', onclick:function(){ if(i.value.trim().length>=6) done({addr:i.value.trim(), zip:''}); }}, '이 주소로')));
+  });
+}
 function phoneOk(p){ return /^01[016789]-?\d{3,4}-?\d{4}$/.test(String(p).trim()); }
 var vf=null;
 function openVerify(bid, user){
-  vf={bid:bid, uid:user?user._id:'', user:user, users:[], f:{name:user?user.name:'', phone:'', bizAddr:'', bizNo:'', birth:''}, checked:null};
+  vf={bid:bid, uid:user?user._id:'', user:user, users:[], f:{name:user?user.name:'', phone:'', bizAddr:'', zip:'', addrDetail:'', birth:''}, checked:null, finding:false};
   var b=S.branches.filter(function(x){ return x._id===bid; })[0]||{};
   var un=Store.watchCol('users', function(arr){ vf.users=arr.filter(function(u){ return u.role!=='master' && u.role!=='admin' && u.active!==false || u.pending; }); if(!vf.user && vf.uid) vf.user=arr.filter(function(u){ return u._id===vf.uid; })[0]; renderVerify(b); }, {where:['branchId', bid]});
   setTimeout(function(){ try{ un(); }catch(e){} }, 1500);
@@ -1813,23 +1835,33 @@ function renderVerify(b){
     [h('option',{value:'', text: vf.users.length? '원장님이 될 가입자를 골라 주세요' : '이 지점에 가입한 사람이 아직 없어요'})].concat(vf.users.map(function(u){ return h('option',{value:u._id, text:u.name+' ('+u.id+')'+(u.pending?' · 승인 대기':''), selected:u._id===vf.uid}); })));
   body.append(h('div',{class:'vf-b'}, h('b',{class:nameCls(b.title), text:b.title||''}), h('small',{text:' '+(b.address||'')})));
   body.append(h('label',{class:'field'}, h('span',{text:'원장님 계정 (먼저 이 지점으로 가입해야 해요)'}), sel));
-  body.append(h('div',{class:'lbl-row'}, h('label',{class:'field'}, h('span',{text:'성함'}), inp('name','예) 김혜나')), h('label',{class:'field'}, h('span',{text:'연락처'}), inp('phone','010-0000-0000',{inputmode:'tel'}))));
-  body.append(h('label',{class:'field'}, h('span',{text:'사업자 주소지'}), inp('bizAddr','사업자 등록증의 주소')));
-  body.append(h('div',{class:'lbl-row'}, h('label',{class:'field'}, h('span',{text:'사업자 등록번호 (10자리)'}), inp('bizNo','000-00-00000',{inputmode:'numeric'})), h('label',{class:'field'}, h('span',{text:'주민등록번호 앞 6자리'}), inp('birth','예) 850315',{inputmode:'numeric', maxlength:6}))));
+  body.append(h('div',{class:'lbl-row'}, h('label',{class:'field'}, h('span',{text:'성함'}), inp('name','예) 김OO')), h('label',{class:'field'}, h('span',{text:'연락처'}), inp('phone','010-0000-0000',{inputmode:'tel'}))));
+  body.append(h('label',{class:'field'}, h('span',{text:'주민등록번호 앞 6자리'}), inp('birth','예) 901212',{inputmode:'numeric', maxlength:6})));
+  // 주소 찾기 (도로명 검색 → 고르기)
+  var addrBox=h('div',{class:'addr-box'+(F.bizAddr?' has':'')},
+    F.bizAddr? h('div',{class:'addr-sel'}, h('b',{text:F.bizAddr}), F.zip? h('small',{text:'우편번호 '+F.zip}) : null) : h('span',{class:'muted', text:'아래 [주소 찾기]로 도로명을 검색해서 골라 주세요'}),
+    h('button',{type:'button', class:'btn sm primary addr-btn', onclick:function(){ vf.finding=!vf.finding; renderVerify(b); }}, h('span',{class:'brq-ico', html:SV_SEARCH}), vf.finding? ' 닫기' : (F.bizAddr? ' 다시 찾기' : ' 주소 찾기')));
+  body.append(h('div',{class:'field'}, h('span',{text:'사업자 주소지 (지점 주소 · 지도 · 내비에 저장돼요)'}), addrBox,
+    vf.finding? h('div',{class:'addr-find', id:'addrFind'}, h('div',{class:'muted', style:'padding:1rem;text-align:center', text:'주소 검색을 여는 중…'})) : null,
+    F.bizAddr? (function(){ var e=inp('addrDetail','상세 주소 (예: 센타프라자 202호)'); return e; })() : null));
+  if(vf.finding) setTimeout(function(){ openAddrSearch($('#addrFind'), function(r){ F.bizAddr=r.addr; F.zip=r.zip; vf.finding=false; vf.checked=null; renderVerify(b); }); }, 0);
   if(ck) body.append(h('div',{class:'vf-res'}, ck.map(function(c){ return h('div',{class:'vf-i '+(c[1]?'ok':'no')}, h('span',{text:c[1]?'✓':'✗'}), c[0]); })));
-  body.append(h('div',{class:'muted', style:'font-size:.74rem;line-height:1.5', text:'※ 사업자 번호는 검증번호로 확인해요(앱 단계에서 국세청 조회 연결 예정). 입력한 정보는 사이트 관리자만 볼 수 있어요.'}));
+  body.append(h('div',{class:'muted', style:'font-size:.74rem;line-height:1.5', text:'※ 입력한 정보는 사이트 관리자만 볼 수 있어요. 권한을 주면 이 주소가 지점 주소로 저장되고, 메인 화면 맨 아래 주소 · 지도 · 내비에 바로 연결돼요.'}));
   body.append(h('div',{class:'mfoot', id:'vfBtns'})); renderVerifyBtn();
 }
 function renderVerifyBtn(){
   var box=$('#vfBtns'); if(!box) return; box.innerHTML=''; var allOk = vf.checked && vf.checked.every(function(c){ return c[1]; });
   box.append(h('button',{class:'btn', onclick:function(){ var F=vf.f, u=vf.user, b=S.branches.filter(function(x){ return x._id===vf.bid; })[0]||{}, a1=String(F.bizAddr).trim().split(/\s+/).slice(0,2).join(' '), a2=String(b.address||'').split(/\s+/).slice(0,2).join(' ');
     vf.checked=[['원장님 계정을 골랐어요', !!u], ['성함이 가입 정보와 같아요 ('+(u?u.name:'-')+')', !!u && String(F.name).trim()===u.name], ['연락처 형식 (010-0000-0000)', phoneOk(F.phone)],
-      ['사업자 주소지 입력'+(a1&&a1===a2?' · 지점 주소와 같은 지역':''), String(F.bizAddr).trim().length>=6], ['사업자 등록번호 검증번호 확인', bizOk(F.bizNo)], ['생년월일(앞 6자리)이 맞는 날짜 · 만 19세 이상', birthOk(F.birth)]];
+      ['주소 찾기로 사업자 주소지를 골랐어요'+(a1&&a1===a2?' · 지점 주소와 같은 지역':''), String(F.bizAddr).trim().length>=6], ['생년월일(앞 6자리)이 맞는 날짜 · 만 19세 이상', birthOk(F.birth)]];
     renderVerify(b); }}, '🔎 확인하기'),
     h('button',{class:'btn primary', disabled:!allOk, onclick:function(){ var F=vf.f, u=vf.user, b=S.branches.filter(function(x){ return x._id===vf.bid; })[0]||{};
-      Store.set('private', vf.bid, {owner:{uid:u._id, id:u.id, name:F.name.trim(), phone:F.phone.trim(), bizAddr:F.bizAddr.trim(), bizNo:F.bizNo.replace(/[^0-9]/g,''), birth6:F.birth, checkedAt:Date.now(), checkedBy:myName()}}, true).catch(fail);
+      var full=(F.bizAddr.trim()+(String(F.addrDetail||'').trim()? ' ('+String(F.addrDetail).trim()+')' : ''));
+      Store.set('private', vf.bid, {owner:{uid:u._id, id:u.id, name:F.name.trim(), phone:F.phone.trim(), bizAddr:full, zip:F.zip||'', birth6:F.birth, checkedAt:Date.now(), checkedBy:myName()}}, true).catch(fail);
       Store.set('users', u._id, {role:'master', active:true, pending:false, perms:{}, branchId:vf.bid, approvedAt:Date.now()}, true).catch(fail);
-      Store.set('branches', vf.bid, {ownerUid:u._id, ownerName:u.name}, true).catch(fail);
+      var bu={ownerUid:u._id, ownerName:u.name};
+      if(full!==b.address){ Object.assign(bu,{address:full, lat:'', lng:'', kakaoId:''}); }   // 주소가 바뀌면 지도 · 내비는 새 주소로 검색
+      Store.set('branches', vf.bid, bu, true).catch(fail);
       closeModal('mVerify'); toast(u.name+' 님을 '+(b.title||'')+' 원장으로 지정했어요'); }}, '👑 원장 권한 부여'));
 }
 
@@ -1883,7 +1915,7 @@ function renderStamp(){
 /* ───────── 일정 보내기 (달력 화면만 사진으로) ───────── */
 var shotFile=null;
 var IN_KAKAO = /KAKAOTALK/i.test(navigator.userAgent);
-function openOutside(){ location.href='kakaotalk://web/openExternal?url='+encodeURIComponent(location.href.split('#')[0]); }
+function openOutside(){ var u=location.href.split('#')[0]; if(/android/i.test(navigator.userAgent)) location.href='intent://'+u.replace(/^https?:\/\//,'')+'#Intent;scheme=https;package=com.android.chrome;end'; else location.href='kakaotalk://web/openExternal?url='+encodeURIComponent(u); }
 $('#btnSend').onclick=function(){
   shotFile=null; $('#toKakao').disabled=true; $('#toInsta').disabled=true;
   var box=$('#shot'); box.innerHTML=''; box.append(h('div',{class:'muted', text:'일정표 사진을 만드는 중…'}));
@@ -1914,7 +1946,7 @@ $('#btnSend').onclick=function(){
       cv.toBlob(function(blob){
         var name='orda-schedule-'+S.view.getFullYear()+'-'+pad(S.view.getMonth()+1)+'.png';
         shotFile=new File([blob], name, {type:'image/png'});
-        box.innerHTML=''; box.append(h('img',{src:URL.createObjectURL(blob), alt:'보낼 일정표'}));
+        box.innerHTML=''; box.append(h('img',{src: IN_KAKAO? cv.toDataURL('image/png') : URL.createObjectURL(blob), alt:'보낼 일정표'}));   // 카카오톡 안에서는 길게 눌러 저장할 수 있게
         $('#toKakao').disabled=false; $('#toInsta').disabled=false;
         if(DEMO==='demo-sendimg'){ var u=URL.createObjectURL(blob); document.body.innerHTML=''; document.body.style.cssText='margin:0;background:#3a3f4a;height:auto'; document.documentElement.style.height='auto'; var im=new Image(); im.src=u; im.style.cssText='width:100%;display:block'; document.body.appendChild(im); }
       }, 'image/png');
@@ -1924,7 +1956,7 @@ $('#btnSend').onclick=function(){
 function saveShot(msg){ var a=document.createElement('a'); a.href=URL.createObjectURL(shotFile); a.download=shotFile.name; document.body.appendChild(a); a.click(); a.remove(); toast(msg||'사진을 저장했어요. 카카오톡·인스타그램에서 사진으로 보내 주세요'); }
 function shareShot(){
   if(!shotFile) return;
-  if(IN_KAKAO){ toast('카카오톡 안에서는 보낼 수 없어요. 위의 [Chrome/Safari로 열기]를 눌러 주세요'); return; }
+  if(IN_KAKAO){ toast('Chrome(또는 Safari)으로 열어요. 다시 로그인한 뒤 [보내기]를 눌러 주세요'); setTimeout(openOutside, 900); return; }
   if(navigator.canShare && navigator.canShare({files:[shotFile]})){
     navigator.share({files:[shotFile], title:'오르다 일정표'}).catch(function(e){ if(!e || e.name!=='AbortError') saveShot('공유가 안 돼서 사진으로 저장했어요. 갤러리에서 카카오톡으로 보내 주세요'); });
     return;
@@ -2031,7 +2063,9 @@ function demoAfterLogin(){ if(!DEMO) return; setTimeout(function(){
   if(DEMO==='demo-adm-br'){ $('#btnAdmin').onclick(); adminTab='branches'; renderAdmin(); }
   if(DEMO==='demo-adm-edit'){ openBranchEdit(S.branches.filter(function(b){ return b._id==='b1'; })[0]); }
   if(DEMO==='demo-adm-verify'){ openVerify('b1', null); setTimeout(function(){ var u=S.users.filter(function(x){ return x._id==='ug'; })[0]; vf.uid='ug'; vf.user=u; vf.users=S.users.filter(function(x){ return x.pending||x.role==='member'; });
-      Object.assign(vf.f,{name:'오세린', phone:'010-2345-6789', bizAddr:'경기 용인시 기흥구 새천년로26번길 2', bizNo:'2208162517', birth:'880512'}); renderVerify(curBranch()); document.querySelector('#vfBtns .btn').click(); }, 200); }
+      Object.assign(vf.f,{name:'오세린', phone:'010-2345-6789', bizAddr:'경기 용인시 기흥구 새천년로26번길 2 (센타프라자)', zip:'16959', addrDetail:'202호', birth:'901212'}); renderVerify(curBranch()); document.querySelector('#vfBtns .btn').click(); }, 200); }
+  if(DEMO==='demo-adm-verify0'){ openVerify('b1', null); }
+  if(DEMO==='demo-adm-addr'){ openVerify('b1', null); setTimeout(function(){ vf.finding=true; renderVerify(curBranch()); }, 200); }
   if(DEMO==='demo-set'||DEMO==='demo-fee-off'){ $('#btnAdmin').onclick(); adminTab='set'; renderAdmin(); }
   if(DEMO==='demo-set-days'){ $('#btnAdmin').onclick(); adminTab='set'; renderAdmin(); var t=new Date(); setDraft.comments={mode:'days', months:[], days:[keyOf(t), keyOf(new Date(t.getFullYear(),t.getMonth(),Math.min(t.getDate()+6,28)))]}; renderAdmin(); setTimeout(function(){ var sb=document.querySelectorAll('#mAdminBody .sbox'); if(sb[3]) sb[3].scrollIntoView(); },50); }
   if(DEMO==='demo-fee'){ $('#btnAdmin').onclick(); adminTab='fee'; renderAdmin(); }
