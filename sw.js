@@ -1,7 +1,7 @@
 // 오프라인용: 앱 파일을 아이패드에 보관해 두고 인터넷 없이도 열리게 합니다.
 // 앱을 고쳐 다시 올릴 때는 아래 버전 숫자만 올려 주세요.
-var CACHE = 'piano-schedule-v5';
-var FILES = ['./', './index.html', './firebase-config.js', './manifest.webmanifest', './logo-ink.png', './piano-ink.png',
+var CACHE = 'piano-schedule-v7';
+var FILES = ['./', './index.html', './firebase-config.js', './manifest.webmanifest', './logo-ink.png', './piano-ink.png', './orda-mark.png', './orda-word.png',
   './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 // 바깥에서 받아 오는 프로그램(사진 만들기, Firebase)도 한 번 받으면 보관
 var CDN = ['https://cdnjs.cloudflare.com/', 'https://www.gstatic.com/firebasejs/'];
