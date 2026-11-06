@@ -106,14 +106,15 @@ input,select,textarea{font:inherit;color:var(--text);-webkit-user-select:text;us
 .nav{width:2.75rem;height:2.75rem;border-radius:.75rem;background:var(--soft);color:var(--navy);font-size:1.4rem;display:grid;place-items:center}
 .legend{display:flex;gap:.8rem;font-size:.85rem;font-weight:700;align-items:center;padding:0 .3rem}
 .legend span{display:inline-flex;align-items:center;gap:.3rem}
-.week,.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.3rem}
+.week,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.3rem}
 .week div{text-align:center;font-size:.8rem;font-weight:700;color:var(--sub);padding:.2rem 0 .35rem}
 .week div:last-child{color:var(--sat)}
 .grid{flex:1;min-height:0;grid-auto-rows:minmax(0,1fr)}
 .day{position:relative;min-height:0;overflow:hidden;border-radius:.6rem;border:1.5px solid var(--line-2);background:#fff;padding:.3rem .3rem .25rem;text-align:left;display:flex;flex-direction:column;gap:.2rem}
 .day:active{background:var(--soft)}
 .day .n{position:absolute;top:.2rem;right:.35rem;font-size:.85rem;font-weight:700;color:var(--text);line-height:1.2}
-.day.sat .n{color:var(--sat)}
+.day.sat .n{color:var(--sat)} .day.sun .n{color:var(--red)}
+.week div:nth-child(7){color:var(--red)}
 .day.other{opacity:.33}
 .day.today{border:2.5px solid var(--o)}
 .day.today .n{color:var(--o-ink)}
@@ -147,12 +148,12 @@ body.shooting .slot.o::after,body.shooting .yd .c::after{display:none}
 .mini{display:flex;flex-direction:column;min-height:0;border-radius:.7rem;padding:.2rem .25rem}
 .mini.cur{background:var(--soft)}
 .mini-t{font-size:.9rem;font-weight:700;color:var(--navy);text-align:left;padding:.1rem .2rem .2rem}
-.mini-g{flex:1;min-height:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:minmax(0,1fr)}
+.mini-g{flex:1;min-height:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));grid-auto-rows:minmax(0,1fr)}
 .mini-g.w7{grid-template-columns:repeat(7,minmax(0,1fr))}
 .yh{font-size:.6rem;font-weight:700;color:var(--sub);display:flex;align-items:center;justify-content:center}
 .yd{display:flex;align-items:center;justify-content:center;min-height:0}
 .yd .c{width:1.45em;height:1.45em;line-height:1.45em;border-radius:50%;text-align:center;font-size:.66rem;font-variant-numeric:tabular-nums}
-.yd.sat .c{color:var(--sat)}
+.yd.sat .c{color:var(--sat)} .yd.sun .c{color:var(--red)}
 .yd.ho .c{background:var(--o);color:#fff;font-weight:700}
 .yd.hg .c{background:var(--g);color:#fff;font-weight:700}
 .yd.hog .c{background:linear-gradient(90deg,var(--o) 50%,var(--g) 50%);color:#fff;font-weight:700}
@@ -299,7 +300,7 @@ body.shooting .slot.o::after,body.shooting .yd .c::after{display:none}
 .uname{font-weight:700;color:var(--navy);text-decoration:underline;text-underline-offset:3px;text-align:left}
 .uid{color:var(--sub);font-size:.78rem}
 .role{display:inline-block;border-radius:999px;padding:.15rem .6rem;font-size:.75rem;font-weight:700}
-.role.master{background:var(--navy);color:#fff} .role.manager{background:var(--o-soft);color:var(--o-ink)} .role.member{background:var(--bg);color:var(--sub)}
+.role.master{background:var(--navy);color:#fff} .role.admin{background:#2a2118;color:#f5ead3} .role.manager{background:var(--o-soft);color:var(--o-ink)} .role.member{background:var(--bg);color:var(--sub)}
 .perm{display:flex;align-items:center;gap:.3rem;font-size:.8rem;white-space:nowrap;margin:.1rem 0}
 .perm input{width:1.15rem;height:1.15rem;accent-color:var(--navy)}
 .perm.off{opacity:.4}
@@ -386,6 +387,88 @@ body.shooting .slot.o::after,body.shooting .yd .c::after{display:none}
 button.rtag:active{filter:brightness(.92)}
 .rlist{max-height:22rem;overflow:auto}
 @media (max-width:760px){ .rgrid3{grid-template-columns:1fr} }
+.adm-link{display:block;margin:.7rem auto 0;font-size:.8rem;color:#8a7a62;text-decoration:underline;text-underline-offset:3px}
+.adm-head{display:flex;flex-direction:column;align-items:center;gap:.15rem;background:#2a2118;color:#f5ead3;border-radius:.8rem;padding:.6rem .7rem;margin-bottom:.7rem;text-align:center}
+.adm-head b{font-size:1rem} .adm-head span{font-size:.72rem;opacity:.85}
+.lauth.admin-mode .seg:not(.typeseg){display:none}
+.lauth.admin-mode #fId{background:#f3ece0;color:#2a2118;font-weight:700}
+/* ───── rev09: 지점 ───── */
+.brand-txt{min-width:0;flex:1}
+.bn-row{display:flex;align-items:center;gap:.3rem;min-width:0}
+.bn-row b{white-space:nowrap;overflow:hidden;text-overflow:clip;min-width:0}
+.brand b.n10,.bri-t b.n10,.nprev.n10,.ro b.n10,.vf-b b.n10{font-size:.92em} .brand b.n12,.bri-t b.n12,.nprev.n12,.ro b.n12,.vf-b b.n12{font-size:.8em;letter-spacing:-.02em}
+.bpick{flex:none;width:1.7rem;height:1.7rem;border-radius:.45rem;background:#fdecee;color:var(--red);font-size:.8rem;display:grid;place-items:center;border:1.5px solid #f3c3c7}
+.bsearch{flex:none;width:1.7rem;height:1.7rem;border-radius:.45rem;background:var(--soft);color:var(--navy);display:grid;place-items:center}
+.bsearch svg{width:.95rem;height:.95rem}
+.hours-line{display:block;font-size:.72rem;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand-ico.haslogo{background-size:cover !important;background-position:center !important} .brand-ico.haslogo .logo-ink{display:none}
+.bsel{display:flex;flex-direction:column;gap:.35rem} .bsel input,.bsel select{width:100%;height:2.9rem;border:1.5px solid #dcc8a2;border-radius:.75rem;padding:0 .8rem;font-size:.95rem;background:#fffdf8}
+.brbar{display:flex;align-items:center;gap:.4rem;border:1.5px solid var(--line);border-radius:.75rem;padding:0 .3rem 0 .7rem;background:#fff;margin-bottom:.6rem}
+.brbar .ef-in{border:0;height:2.7rem;padding:0} .brq-ico{color:var(--sub);display:grid} .brq-ico svg{width:1.1rem;height:1.1rem}
+.rseg{width:100%;margin-bottom:.6rem} .rseg button{flex:1;font-size:.8rem;padding:0 .3rem}
+.brnote{font-size:.78rem;color:var(--red);background:#fff5f5;border-radius:.6rem;padding:.45rem .6rem;margin-bottom:.6rem}
+.brlist,.balist{display:flex;flex-direction:column;gap:.45rem;max-height:56dvh;overflow:auto}
+.britem,.barow{display:flex;align-items:center;gap:.6rem;width:100%;text-align:left;padding:.6rem .7rem;border-radius:.8rem;border:1.5px solid var(--line-2);background:#fff}
+.britem.mine{border-color:var(--navy);background:#f5f8fd}
+.britem.locked{opacity:.4;cursor:not-allowed} .britem:disabled{cursor:not-allowed}
+.bri-ico{flex:none;width:2.4rem;height:2.4rem;border-radius:.6rem;background:#efe0c1 url(orda-word.png) center/80% no-repeat}
+.bri-ico.haslogo{background-size:cover;background-position:center} .bri-ico.big{width:3.6rem;height:3.6rem;border-radius:.8rem}
+.bri-t{flex:1;min-width:0;display:flex;flex-direction:column} .bri-t b{font-size:.98rem;color:var(--navy);white-space:nowrap}
+.bri-t small{font-size:.72rem;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bri-tag{flex:none;font-size:.72rem;font-weight:800;color:#fff;background:var(--navy);border-radius:999px;padding:.15rem .55rem}
+.bri-go{flex:none;font-size:.78rem;font-weight:700;color:var(--navy)} .bri-lock{flex:none}
+.tmp{display:inline-block;font-size:.65rem;font-weight:700;color:var(--o-ink);background:var(--o-soft);border-radius:999px;padding:0 .4rem;margin-top:.1rem;align-self:flex-start}
+.ba-top{display:flex;gap:.5rem;align-items:flex-start} .ba-top .brbar{margin-bottom:.5rem}
+.barow{flex-wrap:wrap} .barow .acts{width:100%;justify-content:flex-end}
+.atabs{flex-wrap:wrap;height:auto;min-height:2.75rem} .atabs button{height:2.4rem}
+.sbox{border:1.5px solid var(--line-2);border-radius:.9rem;padding:.8rem;margin-bottom:.75rem}
+.sbox-h{font-weight:800;color:var(--navy);font-size:.92rem;margin-bottom:.5rem}
+.logo-row{display:flex;align-items:center;gap:.8rem;margin-bottom:.7rem}
+.cnt{float:right;font-size:.72rem;color:var(--sub);font-weight:600}
+.nprev-box{display:flex;align-items:center;gap:.5rem;background:var(--bg);border-radius:.6rem;padding:.4rem .6rem;margin:-.2rem 0 .6rem}
+.nprev{font-size:1.05rem;color:var(--navy);white-space:nowrap}
+.ro{display:flex;flex-direction:column;gap:.2rem} .ro b{font-size:1.05rem;color:var(--navy)}
+.preset{margin:0 0 .6rem} .preset .chip{height:2.1rem;font-size:.8rem}
+.hrow{display:flex;align-items:center;gap:.5rem;padding:.45rem 0;border-top:1px dashed var(--line-2);flex-wrap:wrap}
+.hrow.off .hname{color:var(--sub)} .hname{width:5.6rem;font-weight:700;font-size:.85rem}
+.hseg{height:2.2rem} .hseg button{font-size:.8rem;padding:0 .7rem}
+.htime{display:inline-flex;align-items:center;gap:.25rem} .tsel{height:2.2rem;border:1.5px solid var(--line);border-radius:.5rem;padding:0 .3rem;font-size:.88rem;background:#fff;font-variant-numeric:tabular-nums}
+.hprev{margin-top:.5rem;font-size:.8rem;color:var(--sub);background:var(--bg);border-radius:.6rem;padding:.45rem .6rem} .hprev b{color:var(--navy)}
+.cseg3{width:100%} .cseg3 button{flex:1}
+.cseg3.c4 button{font-size:.8rem;padding:0 .3rem}
+.dadd{display:flex;gap:.4rem;align-items:center;margin-top:.6rem}
+.site-set{border-color:#2a2118;background:#fffaf0}
+.feet{width:100%;border-collapse:collapse;font-size:.92rem;margin-bottom:.3rem} .feet td{padding:.35rem .2rem;border-bottom:1px solid var(--line-2)} .feet td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.feet tr.sum td{font-weight:800;color:var(--navy);border-bottom:0;font-size:1rem}
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.45rem}
+.plan{border:1.5px solid var(--line);border-radius:.8rem;padding:.6rem .5rem;text-align:left;display:flex;flex-direction:column;gap:.15rem;background:#fff}
+.plan b{font-size:.82rem;color:var(--navy)} .plan span{font-weight:800;font-size:.9rem} .plan small{font-size:.66rem;color:var(--sub)}
+.plan.on{border-color:var(--navy);background:#f0f5fd;box-shadow:inset 0 0 0 1px var(--navy)}
+.sched{margin-top:.6rem;background:var(--bg);border-radius:.7rem;padding:.6rem}
+.srow{display:flex;gap:.6rem;align-items:baseline;font-size:.85rem;padding:.2rem 0;font-variant-numeric:tabular-nums} .srow b{margin-left:auto} .srow small{color:var(--sub);font-size:.7rem}
+.bill-st{font-size:.82rem;font-weight:700;border-radius:.6rem;padding:.45rem .6rem;background:#fff3cd;color:#7a5a00;margin-bottom:.6rem} .bill-st.ok{background:#e0f3e8;color:#1f7a43}
+.vf-b{background:var(--bg);border-radius:.6rem;padding:.5rem .7rem;margin-bottom:.7rem} .vf-b b{color:var(--navy)} .vf-b small{color:var(--sub);font-size:.75rem}
+.vf-res{border-radius:.7rem;padding:.5rem .7rem;background:#f7f9fd;margin-bottom:.5rem}
+.vf-i{display:flex;gap:.5rem;font-size:.85rem;padding:.15rem 0} .vf-i span{font-weight:900;width:1rem} .vf-i.ok span{color:var(--g)} .vf-i.no{color:var(--red)} .vf-i.no span{color:var(--red)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.thread{margin-top:.55rem;border-top:1px dashed var(--line);padding-top:.45rem}
+.th-toggle{font-size:.85rem;font-weight:700;color:var(--navy);padding:.2rem 0}
+.cmt{background:#fff;border:1px solid var(--line-2);border-radius:.7rem;padding:.5rem .6rem;margin-top:.4rem}
+.cmt.reply{margin-left:1.3rem;background:#f8fafd;position:relative} .cmt.reply::before{content:"↳";position:absolute;left:-1.05rem;top:.45rem;color:var(--sub)}
+.c-who{display:flex;align-items:center;gap:.35rem;font-size:.8rem} .c-who b{color:var(--text)}
+.c-role{font-size:.65rem;font-weight:800;border-radius:999px;padding:0 .4rem;background:var(--bg);color:var(--sub)} .c-role.master,.c-role.admin{background:var(--navy);color:#fff} .c-role.parent{background:#fdeef6;color:#be185d}
+.c-at{color:var(--sub);font-size:.7rem;margin-left:auto}
+.c-text{font-size:.88rem;line-height:1.55;margin-top:.2rem;white-space:pre-wrap;word-break:keep-all} .c-text.del{color:var(--sub);font-style:italic}
+.c-meta{font-size:.68rem;color:var(--sub);margin-top:.2rem}
+.c-acts{display:flex;gap:.5rem;justify-content:flex-end;margin-top:.25rem} .c-btn{font-size:.75rem;font-weight:700;color:var(--navy)} .c-btn.del{color:var(--red)}
+.c-new{display:flex;gap:.4rem;align-items:flex-end;margin-top:.5rem} .c-new.reply{margin-left:1.3rem} .c-new .ef-in.ta{height:3rem;font-size:.85rem}
+@media (max-width:600px){
+  .brand-ico{width:2.4rem;height:2.4rem}
+  .bpick,.bsearch{width:1.5rem;height:1.5rem}
+  .brand b{font-size:.95rem} .hours-line{font-size:.64rem}
+  .plans{grid-template-columns:1fr}
+  .who{max-width:3.8rem;overflow:hidden} .who b{white-space:nowrap}
+}
 /* ───── rev07 ───── */
 .typeseg{width:100%;margin-bottom:.7rem} .typeseg button{flex:1;font-size:.95rem}
 .gseg{display:flex;gap:.4rem} .gseg.sm{flex:none}
@@ -431,12 +514,12 @@ button.rtag:active{filter:brightness(.92)}
 .main.shot-full{height:auto}
 @media (max-width:600px){ .main.shot-full{min-height:0} }
 /* ───── rev05: 휴대폰(아이폰 · 갤럭시) 화면 ───── */
-.sm{display:none}
+.lbl-sm{display:none}
 .tbreak{display:none}
 @media (max-width:600px){
   html{font-size:clamp(13px, calc(2.2vw + 6px), 15.5px)}
   html,body{height:auto;min-height:100%}
-  .lg{display:none} .sm{display:inline}
+  .lbl-lg{display:none} .lbl-sm{display:inline}
   .main{height:auto;min-height:100dvh;grid-template-rows:auto auto auto;align-content:start;gap:.55rem;
     padding:calc(env(safe-area-inset-top) + .55rem) calc(env(safe-area-inset-right) + .55rem) calc(env(safe-area-inset-bottom) + .7rem) calc(env(safe-area-inset-left) + .55rem)}
   /* 위쪽: 1줄 = 홈마크·학원명·톱니·이름·쪽지, 2줄 = 보기·명단·보내기·비밀번호·로그아웃 */
@@ -539,9 +622,12 @@ button.rtag:active{filter:brightness(.92)}
   <div class="auth lauth">
     <form id="authForm" autocomplete="off">
       <h2 id="authH">로그인</h2>
+      <div class="adm-head" id="admHead" hidden>🛡 <b>사이트 관리자 가입</b><span>학원 · 부모님/선생님 선택 없이 관리자 계정만 만들어요</span></div>
       <div class="lead" id="authLead">학원에서 받은 아이디와 비밀번호로 들어와 주세요.</div>
       <div class="seg"><button type="button" id="tLogin" class="on">로그인</button><button type="button" id="tJoin">회원가입</button></div>
-      <div class="typeseg seg" id="fTypeWrap" hidden><button type="button" id="tParent" class="on">👪 부모님</button><button type="button" id="tTeacher">🎹 선생님</button></div>
+      <div class="typeseg seg" id="fTypeWrap" hidden><button type="button" id="tParent" class="on">부모님</button><button type="button" id="tTeacher">선생님</button></div>
+      <div class="field" id="fBranchWrap" hidden><span>다니는 학원 (지점)</span>
+        <div class="bsel"><input id="fBranchQ" placeholder="학원 이름 · 지역으로 찾기" autocomplete="off"><select id="fBranch"></select></div></div>
       <label class="field" id="fNameWrap" hidden><span id="fNameLbl">부모님 이름</span><input id="fName" placeholder="예) 김하늘" maxlength="20"></label>
       <div id="fChildWrap" hidden>
         <label class="field"><span>자녀 이름</span><input id="fChild" placeholder="예) 김서아" maxlength="20"></label>
@@ -554,7 +640,9 @@ button.rtag:active{filter:brightness(.92)}
       <button type="submit" class="btn primary" id="authBtn">로그인</button>
       <div class="msg" id="authMsg"></div>
       <div class="lpop" id="lpop" hidden><b>✉ 가입 승인 요청 중입니다</b><span>원장님가 승인하면 같은 아이디로 들어올 수 있어요.</span><button type="button" class="btn sm" id="lpopOk">확인</button></div>
-      <div class="demo-note" id="demoNote" hidden>지금은 <b>체험 모드</b>예요. 일정은 이 기기에만 저장돼요.<br><b>가장 먼저 가입한 사람</b>이 원장이 돼요.</div>
+      <button type="button" class="adm-link" id="admLink" hidden>🛡 사이트 관리자 가입</button>
+      <button type="button" class="adm-link" id="admBack" hidden>‹ 일반 로그인으로 돌아가기</button>
+      <div class="demo-note" id="demoNote" hidden>지금은 <b>체험 모드</b>예요. 일정은 이 기기에만 저장돼요.<br>가입하면 <b>원장님 승인</b> 후에 들어올 수 있어요.</div>
     </form>
   </div>
     <div class="lfoot"><b id="heroTitle"></b><span id="heroSub"></span></div>
@@ -564,16 +652,16 @@ button.rtag:active{filter:brightness(.92)}
 <!-- ───────── 메인 화면 ───────── -->
 <div class="main" id="main" hidden>
   <header class="top">
-    <div class="brand"><div class="brand-ico" id="brandIco" role="img" aria-label="ORDA PIANO"><span class="logo-ink"></span></div><div style="min-width:0"><b id="brandName"></b><small id="brandSub">대회 · 연습 일정표</small></div></div>
+    <div class="brand"><div class="brand-ico" id="brandIco" role="img" aria-label="ORDA PIANO"><span class="logo-ink"></span></div><div class="brand-txt"><div class="bn-row"><b id="brandName"></b><button type="button" class="bpick" id="btnBranch" title="학원 목록" aria-label="학원 목록">▼</button><button type="button" class="bsearch" id="btnBranchQ" title="학원 검색" aria-label="학원 검색"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button></div><small id="brandSub" class="hours-line"></small></div></div>
     <span class="demo-badge" id="demoBadge" hidden>체험 모드</span>
     <div class="seg"><button type="button" id="vYear">12개월</button><button type="button" id="vMonth" class="on">1개월</button></div>
-    <button class="btn" id="btnRoster">📋 <span class="lg">명단 게시판</span><span class="sm">명단</span></button>
-    <button class="btn primary" id="btnSend">↗ <span class="lg">일정 보내기</span><span class="sm">보내기</span></button>
+    <button class="btn" id="btnRoster">📋 <span class="lbl-lg">명단 게시판</span><span class="lbl-sm">명단</span></button>
+    <button class="btn primary" id="btnSend">↗ <span class="lbl-lg">일정 보내기</span><span class="lbl-sm">보내기</span></button>
     <button class="icon-btn" id="btnAdmin" title="원장 관리" aria-label="원장 관리"><span class="badge" id="pendBadge" hidden></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
     <div class="who"><b id="whoName"></b><br><span id="whoRole"></span></div>
     <button class="icon-btn mail" id="btnMail" title="받은 피드백" aria-label="받은 피드백"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span class="badge" id="mailBadge" hidden></span></button>
     <span class="tbreak" aria-hidden="true"></span>
-    <button class="btn sm" id="btnPw" title="비밀번호 변경">🔑<span class="lg"> 비밀번호 변경</span></button>
+    <button class="btn sm" id="btnPw" title="비밀번호 변경">🔑<span class="lbl-lg"> 비밀번호 변경</span></button>
     <button class="btn sm" id="btnLogout">로그아웃</button>
   </header>
   <div class="body p-day" id="bodyWrap">
@@ -587,7 +675,7 @@ button.rtag:active{filter:brightness(.92)}
         <button class="btn hbtn" id="btnHist" data-html2canvas-ignore>History</button>
         <button class="btn hbtn" id="btnFb" data-html2canvas-ignore>Feedback</button>
       </div>
-      <div class="week" id="week"><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div></div>
+      <div class="week" id="week"><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div><div>일</div></div>
       <div class="grid" id="grid"></div>
       <div class="year" id="year" hidden></div>
     </section>
@@ -611,8 +699,8 @@ button.rtag:active{filter:brightness(.92)}
 
 <!-- 원장 관리 -->
 <div class="mbg" id="mAdmin"><div class="modal wide">
-  <div class="mhead"><h2>⚙ 원장 관리</h2><button class="mclose" data-close="mAdmin">✕</button></div>
-  <div class="tabs seg"><button type="button" id="aTabUsers" class="on">회원 관리</button><button type="button" id="aTabSet">화면 · 문구 설정</button></div>
+  <div class="mhead"><h2 id="mAdminTitle">⚙ 원장 관리</h2><button class="mclose" data-close="mAdmin">✕</button></div>
+  <div class="tabs seg atabs"><button type="button" id="aTabUsers" class="on">👥 회원</button><button type="button" id="aTabSet">🏫 학원 설정</button><button type="button" id="aTabFee">💳 운영비</button><button type="button" id="aTabBr">🗂 지점 관리</button></div>
   <div id="mAdminBody"></div>
 </div></div>
 
@@ -630,6 +718,24 @@ button.rtag:active{filter:brightness(.92)}
   <button class="app-btn kakao" id="toKakao" disabled><span class="ico">💬</span><span><b>카카오톡으로 보내기</b><small>나와의 채팅 · 친구 · 즐겨찾기에서 골라요</small></span></button>
   <button class="app-btn insta" id="toInsta" disabled><span class="ico">📷</span><span><b>인스타그램으로 보내기</b><small>DM 친구 선택 · 스토리에 보내요</small></span></button>
   <div class="muted" style="font-size:.8rem;line-height:1.55">로고부터 맨 아래 주소까지 화면 전체를 한 장의 사진으로 보내요(히스토리 · 피드백 창은 빠져요). 누르면 아이패드 <b>공유 창</b>이 떠요 → <b>카카오톡</b> 또는 <b>Instagram</b>을 고르면 로그인된 앱에서 받을 사람을 골라요.</div>
+</div></div>
+
+<!-- 학원 목록 -->
+<div class="mbg" id="mBranch"><div class="modal" style="width:min(34rem,100%)">
+  <div class="mhead"><h2>🏫 오르다 학원 목록</h2><button type="button" class="mclose" data-close="mBranch">✕</button></div>
+  <div id="mBranchBody"></div>
+</div></div>
+
+<!-- 지점 추가 · 수정 (관리자) -->
+<div class="mbg" id="mBranchEdit"><div class="modal" style="width:min(32rem,100%)">
+  <div class="mhead"><h2 id="beTitle">지점 추가</h2><button type="button" class="mclose" data-close="mBranchEdit">✕</button></div>
+  <div id="beBody"></div>
+</div></div>
+
+<!-- 원장 확인 (관리자) -->
+<div class="mbg" id="mVerify"><div class="modal" style="width:min(32rem,100%)">
+  <div class="mhead"><h2>🪪 원장 확인 · 권한 부여</h2><button type="button" class="mclose" data-close="mVerify">✕</button></div>
+  <div id="vfBody"></div>
 </div></div>
 
 <!-- 피드백 보기 -->
@@ -687,7 +793,8 @@ var DOW = '일월화수목금토';
 var TIMES = []; for(var m=6*60;m<24*60;m+=10) TIMES.push(pad(Math.floor(m/60))+':'+pad(m%60));
 var addMin = function(t,n){ var p=t.split(':').map(Number), x=Math.min(p[0]*60+p[1]+n, 23*60+50); return pad(Math.floor(x/60))+':'+pad(x%60); };
 var rid = function(){ return Math.random().toString(36).slice(2,9)+Date.now().toString(36).slice(-4); };
-var ROLE = {master:'원장', manager:'매니저', member:'회원'};
+var ROLE = {admin:'관리자', master:'원장', manager:'매니저', member:'회원'};
+var ADMIN_ID = String(CFG.adminId || 'orda-admin').toLowerCase();   // 사이트 관리자 아이디 (firebase-config.js 에서 바꿀 수 있어요)
 var PERMS = [['roster','명단 관리'],['export','스케줄표 내보내기'],['calendar','캘린더 스케줄 수정']];
 var KIND = {add:'추가 되었습니다.', edit:'수정이 이루어졌습니다.', del:'삭제되었습니다.'};
 var tt; function toast(msg){ var t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(tt); tt=setTimeout(function(){ t.classList.remove('show'); }, 2200); }
@@ -695,7 +802,7 @@ var fail = function(){ toast('저장하지 못했어요 (권한 또는 인터넷
 
 /* ───────── 저장소: 체험 모드(이 기기) ───────── */
 function DemoStore(memoryOnly){
-  var KEY='piano-demo-v1';
+  var KEY='orda-demo-v3';   // rev09: 지점별 구조로 바뀌어 체험 데이터를 새로 시작
   var db=null; try{ db = memoryOnly?null:JSON.parse(localStorage.getItem(KEY)); }catch(e){}
   db = db || {cols:{}, acc:{}};
   var session=null;   // 접속할 때마다 로그인 (자동 로그인 안 함)
@@ -759,16 +866,53 @@ function loadScripts(list){ return list.reduce(function(p,src){ return p.then(fu
 
 /* ───────── 상태 ───────── */
 var Store, unsubs=[], signingUp=false;
-function defSettings(){ return {title:'오르다 음악 학원', sub:'대회 · 연습 일정을 한눈에', photo:'', labels:{o:'대회', g:'연습'}, address:'경기 용인시 기흥구 새천년로26번길 2 (센타프라자 202호)', lat:'37.289049', lng:'127.111952', kakaoId:'1653980915'}; }
+function defSettings(){ return {title:'ORDA 오르다 음악 학원', sub:'대회 · 연습 일정을 한눈에', photo:'', logo:'', labels:{o:'대회', g:'연습'}, address:'', lat:'', lng:'', kakaoId:'', region:'', hours:defHours(), comments:{mode:'off', months:[], days:[]}, fee:1200000}; }
+/* ───── 지점(학원) ─────
+   branches/{bid}            : 학원 이름(title, 최대 12자) · 지역 · 주소 · 좌표 · 로고 · 운영시간 · 동그라미 문구 · 댓글 설정 · 연회비
+   branches/{bid}/days · roster · history · feedback · visits · comments : 지점별 일정·명단 등 (다른 지점과 섞이지 않음)
+   users/{uid}.branchId       : 소속 지점 (사이트 관리자만 없음 → 모든 지점에 들어갈 수 있음)
+   private/{bid}              : 원장 확인 정보 (관리자만)     billing/{bid} : 운영비 납부 · 계좌 연동 (관리자 · 그 지점 원장만) */
+var REGIONS=[['metro','수도권 (서울·인천)'],['gg','경기도'],['etc','그 외 지역']];
+var RNAME={metro:'수도권', gg:'경기도', etc:'그 외'};
+var NAME_MAX=12;
+function defHours(){ return {wd:{on:true,s:'14:00',e:'21:00'}, sat:{on:true,s:'10:00',e:'15:00'}, sun:{on:false,s:'10:00',e:'15:00'}, hol:{on:false,s:'10:00',e:'15:00'}}; }
+function hoursText(hh){ hh=hh||defHours(); var d=function(x){ return x.s+'–'+x.e; }, wd=hh.wd, sa=hh.sat, su=hh.sun, ho=hh.hol, parts=[], off=[];
+  if(wd.on&&sa.on&&su.on&&ho.on && d(wd)===d(sa)&&d(sa)===d(su)&&d(su)===d(ho)) return '365일 '+d(wd);
+  if(wd.on) parts.push('평일 '+d(wd)); else off.push('평일');
+  if(sa.on&&su.on&&d(sa)===d(su)) parts.push('주말 '+d(sa)); else { if(sa.on) parts.push('토 '+d(sa)); else off.push('토'); if(su.on) parts.push('일 '+d(su)); else off.push('일'); }
+  if(ho.on) parts.push('공휴일 '+d(ho)); else off.push('공휴일');
+  return parts.join(' · ')+(off.length? ' · '+off.join('·')+' 휴무' : ''); }
+function nameCls(t){ var n=String(t||'').length; return n>=12?'n12':n>=10?'n10':''; }
+function sampleBranches(){ var H=function(a,b,c,d){ return {wd:a, sat:b, sun:c, hol:d}; }, on=function(s,e){ return {on:true,s:s,e:e}; }, off={on:false,s:'10:00',e:'15:00'};
+  return {
+    b1:{title:'오르다음악학원 신갈본점', region:'gg', address:'경기 용인시 기흥구 새천년로26번길 2 (센타프라자 202호)', lat:'37.289049', lng:'127.111952', kakaoId:'1653980915', hours:H(on('14:00','21:00'),on('10:00','15:00'),off,off), fee:1200000, temp:true, order:1},
+    b2:{title:'오르다 동탄2점', region:'gg', address:'경기 화성시 동탄대로 446', hours:H(on('13:00','21:00'),on('10:00','18:00'),on('10:00','18:00'),off), fee:1200000, temp:true, order:2},
+    b3:{title:'오르다 강남역점', region:'metro', address:'서울 강남구 테헤란로 152', hours:H(on('10:00','22:00'),on('10:00','22:00'),on('10:00','22:00'),on('10:00','22:00')), fee:1500000, temp:true, order:3},
+    b4:{title:'오르다 인천송도점', region:'metro', address:'인천 연수구 컨벤시아대로 165', hours:H(on('14:00','20:00'),off,off,off), fee:1200000, temp:true, order:4},
+    b5:{title:'오르다 수원광교점', region:'gg', address:'경기 수원시 영통구 광교중앙로 140', hours:H(on('14:00','21:00'),on('10:00','16:00'),off,off), fee:1200000, temp:true, order:5},
+    b6:{title:'오르다 부산해운대점', region:'etc', address:'부산 해운대구 해운대로 620', hours:H(off,on('10:00','17:00'),off,off), fee:1000000, temp:true, order:6},
+    b7:{title:'오르다 대전둔산점', region:'etc', address:'대전 서구 대덕대로 233', hours:H(on('14:00','21:00'),on('10:00','18:00'),on('12:00','18:00'),off), fee:1000000, temp:true, order:7}
+  }; }
+var GLOBAL_COLS={users:1, meta:1, branches:1, 'private':1, billing:1};
+function bpath(c){ return GLOBAL_COLS[c]? c : 'branches/'+(S.bid||'_none')+'/'+c; }
+function scoped(raw){   // 저장소 이름을 지점별로 자동 연결 (일정·명단 등은 branches/지점/… 아래)
+  var m=function(c,id){ return c==='settings' ? ['branches', S.bid||'_none'] : [bpath(c), id]; }, o=Object.create(raw);
+  ['get','set','del','watchDoc','push'].forEach(function(fn){ o[fn]=function(c,id){ var a=m(c,id); return raw[fn].apply(raw,[a[0],a[1]].concat([].slice.call(arguments,2))); }; });
+  ['add','watchCol'].forEach(function(fn){ o[fn]=function(c){ return raw[fn].apply(raw,[bpath(c)].concat([].slice.call(arguments,1))); }; });
+  o.batch=function(ops){ return raw.batch(ops.map(function(x){ var a=m(x[0],x[1]); return [a[0],a[1],x[2]]; })); };
+  return o; }
 var now0=new Date();
 var S = { user:null, me:null, users:[], settings:defSettings(), roster:{all:[],o:[],g:[],gender:{}}, days:{}, history:[], visits:[],
+  app:{feeOn:false}, branches:[], bid:null, comments:[], openTh:{}, billing:null,
   mode:'month', view:new Date(now0.getFullYear(), now0.getMonth(), 1), panel:'day', sel:keyOf(now0), listMonth:new Date(now0.getFullYear(), now0.getMonth(), 1), fbIn:[], fbOut:[], fbTab:'in' };
 try{ if(!/^(localhost|127\.0\.0\.1)$/.test(location.hostname) || location.hash.indexOf('#demo')!==0){ if(localStorage.getItem('piano-view')==='year') S.mode='year'; } }catch(e){}
 var L = function(c){ return (S.settings.labels||{})[c] || (c==='o'?'대회':'연습'); };
-function can(p){ var m=S.me; if(!m) return false; if(m.role==='master') return true; return m.role==='manager' && !!(m.perms||{})[p]; }
-function isMaster(){ return !!S.me && S.me.role==='master'; }
+function can(p){ var m=S.me; if(!m) return false; if(m.role==='master'||m.role==='admin') return true; return m.role==='manager' && !!(m.perms||{})[p]; }
+function isMaster(){ return !!S.me && (S.me.role==='master' || S.me.role==='admin'); }   // 원장 권한 (관리자 포함)
+function isAdmin(){ return !!S.me && S.me.role==='admin'; }
+function visibleUsers(){ return S.users.filter(function(u){ return isMaster() || u.role!=='admin'; }); }   // 관리자는 원장·관리자에게만 보임
 function myName(){ return (S.me&&S.me.name) || (S.user&&S.user.id) || ''; }
-function logH(kind, detail){ return Store.add('history', {kind:kind, detail:detail, by:myName(), byUid:S.user.uid, at:Date.now()}).catch(function(){}); }
+function logH(kind, detail){ return Store.add('history', {kind:kind, detail:detail, by:myName(), byUid:S.user.uid, byAdmin:isAdmin(), at:Date.now()}).catch(function(){}); }
 function slotsOf(k){ return (((S.days[k]||{}).slots)||[]).map(function(s,i){ return Object.assign({sid:k+'-'+i, names:[], title:'', place:'', note:''}, s); }).sort(function(a,b){ return a.start.localeCompare(b.start); }); }
 function slotTip(k,s){ var d=parseKey(k); return (d.getMonth()+1)+'/'+d.getDate()+' '+s.start+'~'+s.end+'  ● '+L(s.color)+(s.title?'\n'+s.title:'')+(s.place?'\n📍 '+s.place:'')+'\n명단('+(s.names||[]).length+'명): '+((s.names||[]).join(', ')||'없음'); }
 function slotEnd(k,s){ var d=parseKey(k), p=s.end.split(':').map(Number); d.setHours(p[0],p[1],0,0); return d.getTime(); }
@@ -787,16 +931,38 @@ document.addEventListener('click', function(e){ var c=e.target.closest('[data-cl
 
 /* ───────── 로그인 · 회원가입 ───────── */
 var authMode='login', joinType='parent', childG='';
+function renderBranchSel(){ var sel=$('#fBranch'); if(!sel) return; var cur=sel.value, q=$('#fBranchQ').value; sel.innerHTML='';
+  sel.append(h('option',{value:'', text: S.branches.length? '학원을 골라 주세요 ('+S.branches.length+'곳)' : '등록된 학원이 아직 없어요'}));
+  REGIONS.forEach(function(r){ var arr=sortBranches(S.branches).filter(function(b){ return branchMatch(b,q,r[0]); }); if(!arr.length) return;
+    var g=h('optgroup',{label:r[1]}); arr.forEach(function(b){ g.append(h('option',{value:b._id, text:b.title, selected:b._id===cur})); }); sel.append(g); });
+  if(q){ var first=sel.querySelector('optgroup option'); if(first && !sel.value) first.selected=true; } }
 function setJoinType(t, hideAll){ joinType=t; $('#tParent').classList.toggle('on', t==='parent'); $('#tTeacher').classList.toggle('on', t==='teacher');
   $('#fNameLbl').textContent = t==='parent' ? '부모님 이름' : '선생님 이름'; $('#fChildWrap').hidden = hideAll || t!=='parent'; }
 function setChildG(g){ childG=g; $('#gM').classList.toggle('on', g==='m'); $('#gF').classList.toggle('on', g==='f'); }
-function setAuthMode(m){ authMode=m; var j=m==='join';
+function setAuthMode(m){ authMode=m; var adm=m==='admin', j=m==='join'||adm; document.querySelector('.lauth').classList.toggle('admin-mode', adm);
+  $('#admHead').hidden=!adm; $('#admLink').hidden=true; $('#fId').readOnly=adm; if(adm){ $('#fId').value=ADMIN_ID; } else if($('#fId').value===ADMIN_ID && m==='join'){ $('#fId').value=''; }
   $('#tLogin').classList.toggle('on',!j); $('#tJoin').classList.toggle('on',j);
-  $('#fNameWrap').hidden=!j; $('#fPw2Wrap').hidden=!j; $('#fTypeWrap').hidden=!j; setJoinType(joinType, !j); $('#rememberWrap').hidden=j; $('#authMsg').classList.remove('info');
-  $('#authH').textContent=j?'회원가입':'로그인'; $('#authBtn').textContent=j?'가입하고 들어가기':'로그인';
-  $('#authLead').textContent=j?'이름·아이디·비밀번호를 정해 주세요. 가입 후 원장님이 권한을 정해 드려요.':'학원에서 받은 아이디와 비밀번호로 들어와 주세요.';
+  $('#fNameWrap').hidden=!j; $('#fBranchWrap').hidden=!j||adm; $('#fPw2Wrap').hidden=!j; $('#fTypeWrap').hidden=!j||adm; setJoinType(adm?'teacher':joinType, !j||adm); if(adm) $('#fNameLbl').textContent='관리자 이름'; $('#rememberWrap').hidden=j; $('#authMsg').classList.remove('info');
+  $('#authH').textContent=adm?'사이트 관리자 가입':j?'회원가입':'로그인'; $('#authBtn').textContent=adm?'관리자로 가입하기':j?'가입하고 들어가기':'로그인';
+  $('#authLead').textContent=adm?'관리자 아이디는 orda-admin 으로 정해져 있어요. 이름과 비밀번호만 정해 주세요.':j?'이름·아이디·비밀번호를 정해 주세요. 가입 후 원장님이 권한을 정해 드려요.':'학원에서 받은 아이디와 비밀번호로 들어와 주세요.';
+  $('#tLogin').classList.toggle('on', m==='login'); $('#tJoin').classList.toggle('on', m==='join');
+  $('#admBack').hidden=!adm;
   $('#authMsg').textContent=''; }
 $('#tLogin').onclick=function(){ setAuthMode('login'); };
+$('#admLink').onclick=function(){ openAdminJoin(); };
+/* 사이트 관리자 가입: 화면에는 안 보이고, 숨은 방법으로만 열려요 (관리자가 가입한 뒤에는 열리지 않음)
+   ① 주소 끝에 #orda-admin 을 붙여서 열기   ② 로그인 화면의 ORDA PIANO 로고를 빠르게 5번 누르기 */
+var adminTaken=false;
+function openAdminJoin(){
+  if(adminTaken){ setAuthMode('login'); $('#fId').value=ADMIN_ID; $('#authMsg').classList.add('info'); $('#authMsg').textContent='사이트 관리자는 이미 가입돼 있어요. 관리자 아이디로 로그인해 주세요.'; return; }
+  setAuthMode('admin'); }
+var logoTaps=0, logoT=null;
+document.querySelector('.lcard .hero-logo').addEventListener('click', function(){ logoTaps++; clearTimeout(logoT); logoT=setTimeout(function(){ logoTaps=0; }, 1500); if(logoTaps>=5){ logoTaps=0; openAdminJoin(); } });
+function checkAdminHash(){ if(location.hash.replace('#','').toLowerCase()===ADMIN_ID && !S.user){ openAdminJoin(); try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} } }
+window.addEventListener('hashchange', checkAdminHash);
+$('#admBack').onclick=function(){ $('#fId').value=''; setAuthMode('login'); };
+$('#fId').addEventListener('input', function(){ if(authMode==='join' && this.value.trim().toLowerCase()===ADMIN_ID){ if(adminTaken){ this.value=''; $('#authMsg').textContent='쓸 수 없는 아이디예요. 다른 아이디를 정해 주세요'; } else setAuthMode('admin'); } });
+$('#fBranchQ').addEventListener('input', renderBranchSel);
 $('#tParent').onclick=function(){ setJoinType('parent'); }; $('#tTeacher').onclick=function(){ setJoinType('teacher'); };
 $('#gM').onclick=function(){ setChildG('m'); }; $('#gF').onclick=function(){ setChildG('f'); };
 $('#tJoin').onclick=function(){ setAuthMode('join'); };
@@ -814,20 +980,25 @@ $('#authForm').onsubmit=function(e){
   if(pw.length<6){ msg.textContent='비밀번호는 6자 이상이에요'; return; }
   var btn=$('#authBtn'); btn.disabled=true;
   var done=function(){ btn.disabled=false; };
+  if(authMode!=='login' && id===ADMIN_ID && adminTaken){ msg.textContent='사이트 관리자는 이미 가입돼 있어요'; done(); return; }
+  if(authMode==='admin') joinType='teacher';
   if(authMode==='login'){ saveRemember(id,pw); Store.signIn(id,pw).catch(function(err){ msg.textContent=authErr(err); }).then(done); return; }
   var name=$('#fName').value.trim();
   if(!name){ msg.textContent=(joinType==='parent'?'부모님':'선생님')+' 이름을 적어 주세요'; done(); return; }
   var child=$('#fChild').value.trim();
-  if(joinType==='parent' && !child){ msg.textContent='자녀 이름을 적어 주세요'; done(); return; }
-  if(joinType==='parent' && !childG){ msg.textContent='자녀 성별(남 / 여)을 골라 주세요'; done(); return; }
+  var bsel=$('#fBranch').value;
+  if(id!==ADMIN_ID && !bsel){ msg.textContent='다니는 학원(지점)을 골라 주세요'; done(); return; }
+  if(id!==ADMIN_ID && joinType==='parent' && !child){ msg.textContent='자녀 이름을 적어 주세요'; done(); return; }
+  if(id!==ADMIN_ID && joinType==='parent' && !childG){ msg.textContent='자녀 성별(남 / 여)을 골라 주세요'; done(); return; }
   if(pw!==$('#fPw2').value){ msg.textContent='비밀번호 확인이 달라요'; done(); return; }
   signingUp=true;
   Store.signUp(id,pw).then(function(u){
-    return Store.get('meta','master').catch(function(){ return null; }).then(function(mst){
-      var base={id:id, name:name, type:joinType, perms:{}, createdAt:Date.now()};
+    return Store.get('meta','admin').catch(function(){ return null; }).then(function(adm){
+      var bb=S.branches.filter(function(x){ return x._id===bsel; })[0];
+      var base={id:id, name:name, type:joinType, branchId:bsel, branchName:bb?bb.title:'', perms:{}, createdAt:Date.now()};
       if(joinType==='parent') base.children=[{name:child, gender:childG}];
       var asMember=function(){ return Store.set('users', u.uid, Object.assign({role:'member', active:false, pending:true}, base)); };
-      if(!mst) return Store.batch([['users', u.uid, Object.assign({role:'master', active:true}, base)], ['meta','master',{uid:u.uid, at:Date.now()}]]).catch(asMember);
+      if(id===ADMIN_ID && !adm){ base.type='admin'; delete base.children; delete base.branchId; delete base.branchName; return Store.batch([['users', u.uid, Object.assign({role:'admin', active:true}, base)], ['meta','admin',{uid:u.uid, at:Date.now()}]]).catch(asMember); }
       return asMember();
     }).then(function(){ signingUp=false; return afterLogin(u, true); });
   }).catch(function(err){ signingUp=false; msg.textContent=authErr(err); }).then(done);
@@ -849,11 +1020,15 @@ function afterLogin(u, justJoined){
     if(me && me.pending){ Store.signOut(); showLogin(); setAuthMode('login'); $('#fId').value=me.id||'';
       info('가입 승인 요청 중입니다. 원장님이 승인하면 들어올 수 있어요.'); if(justJoined) showPop(); return; }
     if(!me || me.active===false){ Store.signOut(); showLogin(); $('#authMsg').textContent = me?(me.rejected?'가입이 승인되지 않았어요. 원장님께 문의해 주세요':'퇴사 처리된 계정이에요. 원장님께 문의해 주세요'):'가입 정보를 찾을 수 없어요. 회원가입을 해 주세요'; return; }
+    if(me.role!=='admin' && !S.branches.some(function(b){ return b._id===me.branchId; }) && S.branchesLoaded){ Store.signOut(); showLogin(); $('#authMsg').textContent='소속 학원 정보를 찾을 수 없어요. 원장님께 문의해 주세요'; return; }
     S.user=u; S.me=Object.assign({_id:u.uid}, me);
-    startWatches(); logVisit(true); showMain(); demoAfterLogin();
+    if(me.role==='admin'){ var last=null; try{ last=localStorage.getItem('orda-admin-bid'); }catch(e){}
+      S.bid = S.branches.some(function(b){ return b._id===last; }) ? last : ((S.branches[0]||{})._id||null); }
+    else S.bid=me.branchId;
+    applyBranch(); startWatches(); logVisit(true); showMain(); demoAfterLogin();
   });
 }
-function logout(msg){ stopWatches(); Store.signOut(); S.user=null; S.me=null; showLogin(); if(msg) $('#authMsg').textContent=msg; }
+function logout(msg){ stopWatches(); Store.signOut(); S.user=null; S.me=null; S.bid=null; applyBranch(); showLogin(); if(msg) $('#authMsg').textContent=msg; }
 $('#btnLogout').onclick=function(){ logout(); };
 $('#btnPw').onclick=function(){ ['#pwCur','#pwNew','#pwNew2'].forEach(function(x){ $(x).value=''; }); $('#pwMsg').textContent='';
   $('#pwWho').textContent=myName()+' 님 ('+S.user.id+') 의 비밀번호를 바꿔요.'; openModal('mPw'); };
@@ -871,11 +1046,15 @@ $('#pwForm').onsubmit=function(e){ e.preventDefault(); var cur=$('#pwCur').value
 function stopWatches(){ unsubs.forEach(function(f){ try{ f(); }catch(e){} }); unsubs=[]; }
 function startWatches(){
   stopWatches();
+  if(!S.bid){ renderTop(); return; }
   unsubs.push(Store.watchCol('users', function(arr){
     S.users=arr; var me=arr.filter(function(x){ return x._id===S.user.uid; })[0];
     if(me){ if(me.active===false){ logout('퇴사 처리된 계정이에요'); return; } S.me=me; }
     renderTop(); renderCal(); renderSide(); if(isOpen('mAdmin')) renderAdmin(); if(isOpen('mStamp')) renderStamp();
-  }));
+  }, {where:['branchId', S.bid]}));
+  unsubs.push(Store.watchCol('comments', function(arr){ S.comments=arr; renderSide(); }));
+  unsubs.push(Store.watchDoc('meta','app', function(d){ S.app=Object.assign({feeOn:false}, d||{}); $('#aTabFee').hidden=!S.app.feeOn; if(isOpen('mAdmin')){ if(adminTab==='fee' && !S.app.feeOn) adminTab='users'; renderAdmin(); } }));
+  if(isMaster()) unsubs.push(Store.watchDoc('billing', S.bid, function(d){ S.billing=d; if(isOpen('mAdmin') && adminTab==='fee') renderAdmin(); }));
   unsubs.push(Store.watchDoc('roster','main', function(d){ S.roster=normRoster(d); if(isOpen('mRoster')) renderRoster(); if(isOpen('mDay')) renderDay(); }));
   unsubs.push(Store.watchCol('days', function(arr){ S.days={}; arr.forEach(function(x){ S.days[x._id]=x; }); renderCal(); renderSide(); }));
   unsubs.push(Store.watchCol('history', function(arr){ S.history=arr; if(S.panel==='history') renderSide(); }, {orderBy:'at', limit:150}));
@@ -884,10 +1063,20 @@ function startWatches(){
   if(isMaster()) unsubs.push(Store.watchCol('visits', function(arr){ S.visits=arr; if(isOpen('mAdmin')) renderAdmin(); if(isOpen('mStamp')) renderStamp(); }));
 }
 function isOpen(id){ return $('#'+id).classList.contains('open'); }
+function curBranch(){ return S.branches.filter(function(b){ return b._id===S.bid; })[0] || null; }
+function applyBranch(){   // 지금 지점의 이름 · 로고 · 주소 · 운영시간 을 화면에 반영
+  var b=curBranch(), st=defSettings(); b=b||{};
+  S.settings=Object.assign(st, b, {labels:Object.assign(st.labels, b.labels||{}), hours:Object.assign(defHours(), b.hours||{}), comments:Object.assign({mode:'off',months:[],days:[]}, b.comments||{})});
+  if(!S.bid) S.settings.title=defSettings().title;
+  renderBrand(); if(S.user){ renderCal(); renderSide(); if(isOpen('mDay')) renderDay(); }
+}
+function switchBranch(bid){ if(!isAdmin()) return; S.bid=bid; try{ localStorage.setItem('orda-admin-bid', bid); }catch(e){}
+  S.days={}; S.users=[]; S.history=[]; S.fbIn=[]; S.fbOut=[]; S.comments=[]; S.roster={all:[],o:[],g:[],gender:{}}; S.billing=null;
+  applyBranch(); startWatches(); closeModal('mBranch'); toast((curBranch()||{}).title+' 으로 들어왔어요'); }
 
 /* 방문 기록: 앱을 열 때마다(30분 안에 다시 연 건 한 번으로) */
 var lastVisit=0;
-function logVisit(force){ if(!S.user) return; var t=Date.now(); if(!force && t-lastVisit<30*60*1000) return; lastVisit=t;
+function logVisit(force){ if(!S.user || !S.bid || isAdmin()) return; var t=Date.now(); if(!force && t-lastVisit<30*60*1000) return; lastVisit=t;
   var d=new Date(t), mk=d.getFullYear()+'-'+pad(d.getMonth()+1);
   Store.push('visits', S.user.uid+'_'+mk, 'times', t, {uid:S.user.uid, month:mk}).catch(function(){}); }
 
@@ -905,7 +1094,10 @@ function renderBrand(){
   $('#heroTitle').textContent=st.title; $('#heroSub').textContent=st.sub;
   var hero=$('#hero'); hero.classList.toggle('nophoto', !st.photo);
   hero.style.backgroundImage = st.photo ? 'linear-gradient(180deg,rgba(15,30,60,.1) 30%,rgba(15,30,60,.7)), url("'+st.photo+'")' : '';
-  $('#brandName').textContent=st.title; $('#calBrand').textContent=st.title;
+  var bn=$('#brandName'); bn.textContent=st.title; bn.className=nameCls(st.title); $('#calBrand').textContent=st.title;
+  var hl=$('#brandSub'); hl.textContent = S.bid ? hoursText(st.hours) : '대회 · 연습 일정표'; hl.title=hl.textContent;
+  var ico=$('#brandIco'); ico.classList.toggle('haslogo', !!st.logo); ico.style.backgroundImage = st.logo ? 'url("'+st.logo+'")' : '';
+  $('#btnBranch').hidden = $('#btnBranchQ').hidden = !S.user;
   renderFoot(); document.title=st.title+' 일정표';
   $('#legend').innerHTML=''; ['o','g'].forEach(function(c){ $('#legend').append(h('span',null,h('span',{class:'dot '+c}), L(c))); });
 }
@@ -940,6 +1132,33 @@ function renderTop(){
   $('#vYear').classList.toggle('on', S.mode==='year'); $('#vMonth').classList.toggle('on', S.mode==='month');
 }
 
+/* ───────── 학원 목록 · 검색 (관리자만 다른 학원에 들어갈 수 있음) ───────── */
+var brQ='', brR='all';
+function branchMatch(b,q,r){ q=String(q||'').trim(); return (r==='all'||b.region===r) && (!q || (b.title+' '+(b.address||'')+' '+(RNAME[b.region]||'')).indexOf(q)>=0); }
+function sortBranches(arr){ return arr.slice().sort(function(a,b){ return (a.order||999)-(b.order||999) || String(a.title).localeCompare(String(b.title)); }); }
+function regionSeg(cur, on){ return h('div',{class:'seg rseg'}, [['all','전체']].concat(REGIONS).map(function(r){ return h('button',{type:'button', class:cur===r[0]?'on':'', onclick:function(){ on(r[0]); }}, r[0]==='all'?'전체':RNAME[r[0]]); })); }
+function openBranchList(focus){ renderBranchList(); openModal('mBranch'); if(focus) setTimeout(function(){ var i=$('#brQ'); if(i) i.focus(); }, 60); }
+$('#btnBranch').onclick=function(){ openBranchList(false); };
+$('#btnBranchQ').onclick=function(){ openBranchList(true); };
+function renderBranchList(){
+  var body=$('#mBranchBody'), adm=isAdmin(); body.innerHTML='';
+  var inp=h('input',{id:'brQ', class:'ef-in', placeholder:'학원 이름 · 주소 · 지역 검색', value:brQ, autocomplete:'off'});
+  inp.addEventListener('input', function(){ brQ=inp.value; draw(); });
+  body.append(h('div',{class:'brbar'}, h('span',{class:'brq-ico', html:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'}), inp));
+  body.append(regionSeg(brR, function(r){ brR=r; renderBranchList(); }));
+  if(!adm) body.append(h('div',{class:'brnote', text:'다른 학원은 사이트 관리자만 들어갈 수 있어요. 내 학원만 열려요.'}));
+  var list=h('div',{class:'brlist'}); body.append(list);
+  function draw(){ list.innerHTML=''; var arr=sortBranches(S.branches).filter(function(b){ return branchMatch(b,brQ,brR); });
+    if(!arr.length) list.append(h('div',{class:'side-empty', text:'찾는 학원이 없어요.'}));
+    arr.forEach(function(b){ var mine=b._id===S.bid, can=adm && !mine;
+      list.append(h('button',{type:'button', class:'britem'+(mine?' mine':'')+(!adm&&!mine?' locked':''), disabled:!can && !mine,
+          onclick:function(){ if(mine) closeModal('mBranch'); else if(adm) switchBranch(b._id); }},
+        h('span',{class:'bri-ico'+(b.logo?' haslogo':''), style:b.logo?'background-image:url("'+b.logo+'")':''}),
+        h('span',{class:'bri-t'}, h('b',{class:nameCls(b.title), text:b.title}), h('small',{text:(RNAME[b.region]||'')+' · '+(b.address||'')}), h('small',{class:'hours-line', text:hoursText(b.hours)})),
+        mine? h('span',{class:'bri-tag', text: adm?'보는 중':'내 학원'}) : (!adm? h('span',{class:'bri-lock', text:'🔒'}) : h('span',{class:'bri-go', text:'들어가기 ›'})))); }); }
+  draw();
+}
+
 /* ───────── 그리기: 달력 ───────── */
 function setMode(m){ S.mode=m; try{ if(!DEMO) localStorage.setItem('piano-view', m); }catch(e){}
   if(m==='year'){ var sd=parseKey(S.sel); S.listMonth=new Date(sd.getFullYear(), sd.getMonth(), 1); if(S.panel==='day') S.panel='month'; }
@@ -955,9 +1174,9 @@ var sx=null;
   el.addEventListener('touchstart', function(e){ sx=e.touches[0].clientX; }, {passive:true});
   el.addEventListener('touchend', function(e){ if(sx===null) return; var dx=e.changedTouches[0].clientX-sx; sx=null; if(Math.abs(dx)>80) (dx<0?$('#next'):$('#prev')).onclick(); }); });
 
-function monthWeeks(y,m){ // 월~토 (일요일 제외)
+function monthWeeks(y,m){ // 월~일
   var first=new Date(y,m,1), d=new Date(y,m,1-((first.getDay()+6)%7)), weeks=[];
-  for(var w=0; w<7; w++){ var wk=[]; for(var i=0;i<7;i++){ if(i<6) wk.push(new Date(d)); d.setDate(d.getDate()+1); }
+  for(var w=0; w<7; w++){ var wk=[]; for(var i=0;i<7;i++){ wk.push(new Date(d)); d.setDate(d.getDate()+1); }
     if(wk.some(function(x){ return x.getMonth()===m; })) weeks.push(wk); if(d>first && d.getMonth()!==m) break; }
   return weeks;
 }
@@ -972,7 +1191,7 @@ function renderCal(){
   var grid=$('#grid'); grid.innerHTML='';
   monthWeeks(y,m).forEach(function(wk){ wk.forEach(function(d){
     var k=keyOf(d), sl=slotsOf(k);
-    grid.append(h('button',{class:'day'+(d.getMonth()!==m?' other':'')+(d.getDay()===6?' sat':'')+(k===todayK?' today':'')+(sl.length?' has':'')+(sl.length>2?' many':'')+(k===S.sel?' sel':''), onclick:function(){ selectDay(k); }},
+    grid.append(h('button',{class:'day'+(d.getMonth()!==m?' other':'')+(d.getDay()===6?' sat':'')+(d.getDay()===0?' sun':'')+(k===todayK?' today':'')+(sl.length?' has':'')+(sl.length>2?' many':'')+(k===S.sel?' sel':''), onclick:function(){ selectDay(k); }},
       h('span',{class:'n', text:d.getDate()}), h('span',{class:'sp'}),
       sl.map(function(s){ return h('div',{class:'slot '+s.color, 'data-tip':slotTip(k,s)},
         h('div',{class:'l1'}, h('span',{class:'dot '+s.color}), h('span',{class:'tm'}, s.start, h('span',{class:'te', text:'~'+s.end})), h('span',{class:'lb', text:L(s.color)})),
@@ -982,14 +1201,14 @@ function renderCal(){
 function miniMonth(y, m, opts){
   // opts: {w7, cls(d,k), tip(k), click(k), title}
   var g=h('div',{class:'mini-g'+(opts.w7?' w7':'')});
-  (opts.w7?'일월화수목금토':'월화수목금토').split('').forEach(function(w,i,arr){ g.append(h('span',{class:'yh', style:(i===arr.length-1?'color:var(--sat)':(opts.w7&&i===0?'color:var(--red)':'')), text:w})); });
+  (opts.w7?'일월화수목금토':'월화수목금토일').split('').forEach(function(w,i){ var c=opts.w7?(i===0?'red':i===6?'sat':''):(i===6?'red':i===5?'sat':''); g.append(h('span',{class:'yh', style:c?'color:var(--'+c+')':'', text:w})); });
   var last=new Date(y,m+1,0).getDate(), started=false;
   for(var d=1; d<=last; d++){
-    var dt=new Date(y,m,d), dw=dt.getDay(); if(!opts.w7 && dw===0) continue;
-    var col = opts.w7 ? dw : dw-1;
+    var dt=new Date(y,m,d), dw=dt.getDay();
+    var col = opts.w7 ? dw : (dw+6)%7;
     if(!started){ for(var b=0;b<col;b++) g.append(h('span')); started=true; }
     var k=keyOf(dt);
-    g.append(h('button',{class:'yd'+(dw===6?' sat':'')+' '+(opts.cls(dt,k)||''), 'data-tip':opts.tip(k)||null, onclick:(function(kk){ return function(){ opts.click(kk); }; })(k)}, h('span',{class:'c', text:d})));
+    g.append(h('button',{class:'yd'+(dw===6?' sat':'')+(dw===0?' sun':'')+' '+(opts.cls(dt,k)||''), 'data-tip':opts.tip(k)||null, onclick:(function(kk){ return function(){ opts.click(kk); }; })(k)}, h('span',{class:'c', text:d})));
   }
   var t=new Date();
   var lm=S.listMonth;
@@ -1039,9 +1258,9 @@ function renderDayPanel(box){
   var k=S.sel, d=parseKey(k), sl=slotsOf(k), ed=can('calendar'), nowT=Date.now();
   box.append(h('div',{class:'side-head'},
     h('div',null, h('div',{class:'date-title', text:(d.getMonth()+1)+'월 '+d.getDate()+'일 '+DOW[d.getDay()]+'요일'}), h('div',{class:'date-sub', text: sl.length? '일정 '+sl.length+'개' : '일정 없음'})),
-    ed && d.getDay()!==0 ? h('button',{class:'btn primary', onclick:function(){ openDay(k); }}, sl.length? '✎ 일정 수정' : '＋ 일정 추가') : null));
+    ed ? h('button',{class:'btn primary', onclick:function(){ openDay(k); }}, sl.length? '✎ 일정 수정' : '＋ 일정 추가') : null));
   var list=h('div',{class:'side-list'});
-  if(!sl.length) list.append(h('div',{class:'side-empty', html: d.getDay()===0? '일요일은 쉬는 날이에요.' : '이 날은 일정이 없어요.'+(ed?'<br>오른쪽 위 <b>＋ 일정 추가</b>를 눌러 보세요.':'')}));
+  if(!sl.length) list.append(h('div',{class:'side-empty', html: '이 날은 일정이 없어요.'+(ed?'<br>오른쪽 위 <b>＋ 일정 추가</b>를 눌러 보세요.':'')}));
   sl.forEach(function(s){
     var past=slotEnd(k,s)<nowT, lab=L(s.color);
     list.append(h('div',{class:'dcard '+s.color+(past?' past':'')},
@@ -1051,9 +1270,48 @@ function renderDayPanel(box){
       h('div',{class:'dc-row'}, h('span',{class:'dc-k', text:'⏰ '+lab+' 시간'}), h('span',{text: s.start+' ~ '+s.end})),
       h('div',{class:'dc-row col'}, h('span',{class:'dc-k', text:'👥 '+lab+' 참가자 명단 ('+s.names.length+'명)'}),
         s.names.length? h('div',{class:'dc-names'}, s.names.map(function(n){ return h('span',{class:gOf(n), text:n}); })) : h('span',{class:'muted', text:'아직 명단이 없어요'})),
-      s.note? h('div',{class:'dc-note'}, h('span',{class:'dc-k', text:'📝 설명 · 당부의 말씀'}), h('div',{text:s.note})) : null));
+      s.note? h('div',{class:'dc-note'}, h('span',{class:'dc-k', text:'📝 설명 · 당부의 말씀'}), h('div',{text:s.note})) : null,
+      commentsOn(k)? threadBox(k, s) : null));
   });
   box.append(list);
+}
+/* ───────── 일정 댓글 · 답글 (원장이 학원 설정에서 켜기: 전체 달력 / 고른 달만) ─────────
+   branches/{bid}/comments/{id} : { date, sid, parent(답글이면 원 댓글 id), text, by, byUid, byRole, at, editedAt, editedBy, deleted, deletedAt, deletedBy } */
+function commentsOn(k){ var c=S.settings.comments||{}; return c.mode==='all' || (c.mode==='months' && (c.months||[]).indexOf(k.slice(0,7))>=0) || (c.mode==='days' && (c.days||[]).indexOf(k)>=0); }
+function canComment(){ return isMaster() || (S.me && S.me.type==='parent'); }
+function canEditC(c){ return isMaster() || (S.user && c.byUid===S.user.uid); }
+var cmtDraft={}, cmtEdit=null, cmtReply=null;
+function mdhm(t){ var d=new Date(t); return (d.getMonth()+1)+'.'+pad(d.getDate())+' '+hm(t); }
+function threadBox(k, s){
+  var key=k+'|'+s.sid, all=S.comments.filter(function(c){ return c.date===k && c.sid===s.sid; }).sort(function(a,b){ return (a.at||0)-(b.at||0); });
+  var tops=all.filter(function(c){ return !c.parent; }), live=all.filter(function(c){ return !c.deleted; }).length, open=!!S.openTh[key];
+  var wrap=h('div',{class:'thread'});
+  wrap.append(h('button',{type:'button', class:'th-toggle', onclick:function(){ S.openTh[key]=!open; renderSide(); }}, '💬 댓글 '+live, h('span',{text: open?' ▲':' ▼'})));
+  if(!open) return wrap;
+  var item=function(c, isReply){
+    var who=h('span',{class:'c-who'}, h('b',{text:c.by}), h('span',{class:'c-role '+(c.byRole||''), text:c.byRole==='master'||c.byRole==='admin'?'원장':c.byRole==='parent'?'부모님':'선생님'}), h('span',{class:'c-at', text:mdhm(c.at)}));
+    var body;
+    if(c.deleted) body=h('div',{class:'c-text del', text:'삭제된 댓글이에요'});
+    else if(cmtEdit===c._id){ var ta=h('textarea',{class:'ef-in ta', maxlength:300}); ta.value=c.text;
+      body=h('div',null, ta, h('div',{class:'c-acts'}, h('button',{type:'button', class:'btn sm', onclick:function(){ cmtEdit=null; renderSide(); }}, '취소'),
+        h('button',{type:'button', class:'btn sm primary', onclick:function(){ var t=ta.value.trim(); if(!t) return; Store.set('comments', c._id, {text:t, editedAt:Date.now(), editedBy:myName()}, true).catch(fail); cmtEdit=null; }}, '저장'))); }
+    else body=h('div',{class:'c-text', text:c.text});
+    var meta = c.deleted? h('div',{class:'c-meta', text:mdhm(c.deletedAt)+' · '+c.deletedBy+' 님이 삭제했어요'}) : c.editedAt? h('div',{class:'c-meta', text:'수정됨 · '+mdhm(c.editedAt)+' · '+c.editedBy}) : null;
+    var acts = c.deleted||cmtEdit===c._id ? null : h('div',{class:'c-acts'},
+      !isReply && canComment()? h('button',{type:'button', class:'c-btn', onclick:function(){ cmtReply = cmtReply===c._id?null:c._id; renderSide(); }}, '↳ 답글') : null,
+      canEditC(c)? h('button',{type:'button', class:'c-btn', onclick:function(){ cmtEdit=c._id; renderSide(); }}, '수정') : null,
+      canEditC(c)? h('button',{type:'button', class:'c-btn del', onclick:function(){ if(!confirm('이 댓글을 삭제할까요?')) return; Store.set('comments', c._id, {deleted:true, text:'', deletedAt:Date.now(), deletedBy:myName()}, true).catch(fail); }}, '삭제') : null);
+    return h('div',{class:'cmt'+(isReply?' reply':'')}, who, body, meta, acts);
+  };
+  var input=function(parent){ var dk=key+'|'+(parent||''), ta=h('textarea',{class:'ef-in ta', maxlength:300, placeholder: parent?'답글을 적어 주세요':'댓글을 적어 주세요'}); ta.value=cmtDraft[dk]||'';
+    ta.addEventListener('input', function(){ cmtDraft[dk]=ta.value; });
+    return h('div',{class:'c-new'+(parent?' reply':'')}, ta, h('button',{type:'button', class:'btn sm primary', onclick:function(){ var t=ta.value.trim(); if(!t) return;
+      Store.add('comments', {date:k, sid:s.sid, parent:parent||null, text:t, by:myName(), byUid:S.user.uid, byRole: isMaster()?'master':(S.me.type||'member'), at:Date.now()}).catch(fail);
+      cmtDraft[dk]=''; cmtReply=null; }}, '등록')); };
+  if(!tops.length) wrap.append(h('div',{class:'muted', style:'font-size:.8rem;padding:.3rem 0', text:'아직 댓글이 없어요.'}));
+  tops.forEach(function(c){ wrap.append(item(c,false)); all.filter(function(r){ return r.parent===c._id; }).forEach(function(r){ wrap.append(item(r,true)); }); if(cmtReply===c._id) wrap.append(input(c._id)); });
+  if(canComment()) wrap.append(input(null)); else wrap.append(h('div',{class:'muted', style:'font-size:.75rem', text:'댓글은 부모님과 원장님이 쓸 수 있어요.'}));
+  return wrap;
 }
 function renderMonthPanel(box, lm){
   var y=lm.getFullYear(), m=lm.getMonth(), last=new Date(y,m+1,0).getDate(), nowT=Date.now(), groups=[], total=0, pastN=0;
@@ -1121,7 +1379,7 @@ function renderMail(){
 }
 function openFbCompose(){
   var sel=$('#fbTo'); sel.innerHTML='';
-  S.users.filter(function(u){ return u.active!==false && u._id!==S.user.uid; }).forEach(function(u){ sel.append(h('option',{value:u._id, text:u.name+' ('+(ROLE[u.role]||'회원')+')'})); });
+  visibleUsers().filter(function(u){ return u.active!==false && !u.pending && u._id!==S.user.uid; }).forEach(function(u){ sel.append(h('option',{value:u._id, text:u.name+' ('+(ROLE[u.role]||'회원')+')'})); });
   if(!sel.options.length){ toast('보낼 수 있는 회원이 아직 없어요'); return; }
   $('#fbText').value=''; openModal('mFb');
 }
@@ -1135,7 +1393,7 @@ function renderHistPanel(side){
   var box=h('div',{class:'side-list'}); side.append(box);
   if(!S.history.length){ box.append(h('div',{class:'h-empty', text:'아직 수정 기록이 없어요.'})); return; }
   S.history.forEach(function(x){ box.append(h('div',{class:'h-item k-'+x.kind},
-    h('div',{class:'h-t', text:x.by+'에 의해 '+fmtDT(x.at)+'분에 '+(KIND[x.kind]||'')}),
+    h('div',{class:'h-t', text:(x.byAdmin && !isMaster()? '학원' : x.by)+'에 의해 '+fmtDT(x.at)+'분에 '+(KIND[x.kind]||'')}),
     x.detail?h('div',{class:'h-d', text:x.detail}):null)); });
 }
 
@@ -1308,21 +1566,28 @@ function rosterDel(c, n, quiet){
 
 /* ───────── 원장 관리 ───────── */
 var adminTab='users', tmpPhoto=null;
-$('#btnAdmin').onclick=function(){ adminTab='users'; tmpPhoto=null; renderAdmin(); openModal('mAdmin'); };
+$('#btnAdmin').onclick=function(){ $('#aTabBr').hidden=!isAdmin(); $('#aTabFee').hidden=!S.app.feeOn; if(adminTab==='fee' && !S.app.feeOn) adminTab='users'; $('#mAdminTitle').textContent = isAdmin()? '⚙ 관리자 · 원장 관리' : '⚙ 원장 관리'; adminTab='users'; tmpPhoto=null; renderAdmin(); openModal('mAdmin'); };
 $('#aTabUsers').onclick=function(){ adminTab='users'; renderAdmin(); };
+$('#aTabFee').onclick=function(){ adminTab='fee'; renderAdmin(); };
+$('#aTabBr').onclick=function(){ adminTab='branches'; renderAdmin(); };
 $('#aTabSet').onclick=function(){ adminTab='set'; tmpPhoto=null; renderAdmin(); };
 function visitsOf(uid){ var t=[]; S.visits.forEach(function(v){ if(v.uid===uid) t=t.concat(v.times||[]); }); return t.sort(function(a,b){ return a-b; }); }
-function approveUser(u){
-  Store.set('users',u._id,{active:true, pending:false, approvedAt:Date.now()},true).catch(fail);
+function approveUser(u, role){
+  if(role==='master' && !isAdmin()) role='member';
+  Store.set('users',u._id,{active:true, pending:false, role:role||'member', approvedAt:Date.now()},true).catch(fail);
   var kids=(u.type==='parent' && u.children)||[];
   if(kids.length){ var nr=rosterCopy(); kids.forEach(function(c){ if(nr.all.indexOf(c.name)<0) nr.all.push(c.name); if(c.gender) nr.gender[c.name]=c.gender; });
     rosterSave(nr, 'add', '전체 명부 (가입 승인): '+kids.map(function(c){ return c.name; }).join(', ')); }
-  toast(u.name+' 님 가입을 승인했어요'+(kids.length?' · 자녀를 명부에 넣었어요':''));
+  toast(u.name+' 님 가입을 '+(role==='master'?'원장으로 ':'')+'승인했어요'+(kids.length?' · 자녀를 명부에 넣었어요':''));
 }
 function renderAdmin(){
-  $('#aTabUsers').classList.toggle('on', adminTab==='users'); $('#aTabSet').classList.toggle('on', adminTab==='set');
+  $('#aTabUsers').classList.toggle('on', adminTab==='users'); $('#aTabSet').classList.toggle('on', adminTab==='set'); $('#aTabFee').classList.toggle('on', adminTab==='fee'); $('#aTabBr').classList.toggle('on', adminTab==='branches');
   var body=$('#mAdminBody'); body.innerHTML='';
+  if(adminTab==='branches' && isAdmin()) return renderBranchAdmin(body);
+  if(!S.bid){ body.append(h('div',{class:'side-empty', text:'먼저 지점 관리에서 학원을 추가해 주세요.'})); return; }
   if(adminTab==='set') return renderSettings(body);
+  if(adminTab==='fee' && S.app.feeOn) return renderFee(body);
+  if(adminTab==='fee') adminTab='users';
   var pend=S.users.filter(function(u){ return u.pending===true; }).sort(function(a,b){ return (a.createdAt||0)-(b.createdAt||0); });
   if(pend.length){
     body.append(h('div',{class:'pend'}, h('div',{class:'pend-h'}, '🔔 가입 승인 요청 ', h('b',{text:pend.length+'명'})),
@@ -1331,16 +1596,17 @@ function renderAdmin(){
           u.type==='parent' && u.children ? h('div',{class:'uid'}, '자녀 ', u.children.map(function(c){ return h('span',{class:'npill sm '+gcls(c.gender), text:c.name}); })) : null,
           h('div',{class:'uid', text:'신청 '+(u.createdAt?fmtDT(u.createdAt):'-')})),
         h('div',{class:'acts'},
-          h('button',{class:'btn sm primary', onclick:function(){ approveUser(u); }}, '승인'),
+          h('button',{class:'btn sm primary', onclick:function(){ approveUser(u,'member'); }}, '승인'),
+          isAdmin()? h('button',{class:'btn sm', onclick:function(){ openVerify(S.bid, u); }}, '원장으로 확인·승인') : null,
           h('button',{class:'btn sm danger', onclick:function(){ if(!confirm(u.name+'('+u.id+') 님의 가입을 거절할까요?')) return; Store.set('users',u._id,{active:false, pending:false, rejected:true},true).catch(fail); toast('거절했어요'); }}, '거절'))); })));
   }
-  var order={master:0, manager:1, member:2};
+  var order={admin:0, master:1, manager:2, member:3};
   var list=S.users.filter(function(u){ return u.active!==false && !u.pending; }).sort(function(a,b){ return (order[a.role]-order[b.role]) || String(a.name).localeCompare(String(b.name)); });
   var tb=h('tbody');
   list.forEach(function(u){
-    var vs=visitsOf(u._id), isM=u.role==='master', isMg=u.role==='manager';
+    var vs=visitsOf(u._id), isA=u.role==='admin', isM=u.role==='master'||isA, isMg=u.role==='manager';
     tb.append(h('tr',null,
-      h('td',null, h('button',{class:'uname', onclick:function(){ openStamp(u); }, text:u.name}), h('div',{class:'uid'}, u.id, u.type? h('span',{class:'utype '+u.type, text:u.type==='parent'?'부모님':'선생님'}) : null),
+      h('td',null, h('button',{class:'uname', onclick:function(){ openStamp(u); }, text:u.name}), h('div',{class:'uid'}, u.id, u.type && u.type!=='admin'? h('span',{class:'utype '+u.type, text:u.type==='parent'?'부모님':'선생님'}) : null),
         u.type==='parent' && u.children ? h('div',{class:'uid'}, '자녀 ', u.children.map(function(c){ return h('span',{class:'npill sm '+gcls(c.gender), text:c.name}); })) : null),
       h('td',null, h('span',{class:'role '+u.role, text:ROLE[u.role]||'회원'})),
       h('td',null, PERMS.map(function(p){ var on=isM || (isMg && !!(u.perms||{})[p[0]]);
@@ -1349,42 +1615,226 @@ function renderAdmin(){
           Store.set('users', u._id, {perms:perms}, true).catch(fail); toast(u.name+' 님 '+p[1]+' 권한을 '+(e.target.checked?'줬어요':'뺐어요')); }}), p[1]); })),
       h('td',{class:'vis'}, h('b',{text:vs.length+'회'}), h('small',{text: vs.length? '최근 '+fmtDT(vs[vs.length-1]) : '방문 기록 없음'})),
       h('td',null, h('div',{class:'acts'},
-        isM? h('span',{class:'muted', text:'원장'}) : null,
+        isA? h('span',{class:'muted', text:'사이트 관리자'}) : null,
+        isAdmin() && u.role==='master'? h('button',{class:'btn sm', onclick:function(){ if(!confirm(u.name+' 님의 원장 지정을 해제할까요?')) return; Store.set('users',u._id,{role:'member', perms:{roster:false, export:false, calendar:false}},true).catch(fail); toast('원장 지정을 해제했어요'); }}, '원장 해제') : null,
+        isAdmin() && !isM? h('button',{class:'btn sm primary', onclick:function(){ openVerify(S.bid, u); }}, '원장 지정') : null,
         u.role==='member'? h('button',{class:'btn sm', onclick:function(){ Store.set('users',u._id,{role:'manager', perms:{roster:false, export:false, calendar:false}},true).catch(fail); toast(u.name+' 님을 매니저로 올렸어요. 권한을 체크해 주세요'); }}, '매니저로 승급') : null,
         isMg? h('button',{class:'btn sm', onclick:function(){ Store.set('users',u._id,{role:'member', perms:{roster:false, export:false, calendar:false}},true).catch(fail); toast(u.name+' 님을 회원으로 바꿨어요'); }}, '회원으로') : null,
-        !isM? h('button',{class:'btn sm danger', onclick:function(){ if(!confirm(u.name+'('+u.id+') 님을 삭제할까요?\n퇴사 처리되어 더 이상 들어올 수 없어요.')) return;
+        (!isM || (isAdmin() && !isA))? h('button',{class:'btn sm danger', onclick:function(){ if(!confirm(u.name+'('+u.id+') 님을 삭제할까요?\n퇴사 처리되어 더 이상 들어올 수 없어요.')) return;
           Store.set('users',u._id,{active:false, role:'member', perms:{roster:false, export:false, calendar:false}, deletedAt:Date.now()},true).catch(fail); toast('삭제했어요'); }}, '삭제') : null))
     ));
   });
   body.append(h('div',{style:'overflow-x:auto'}, h('table',{class:'mtable'},
     h('thead',null, h('tr',null, ['이름 (누르면 방문 스탬프)','등급','권한','방문','관리'].map(function(t){ return h('th',{text:t}); }))), tb)));
-  body.append(h('div',{class:'rnote', text:'매니저는 사이트에 가입한 사람 중에서만 올릴 수 있어요. 권한 체크는 바로 적용돼요.'}));
+  body.append(h('div',{class:'rnote', text:(isAdmin()? '원장 지정 · 해제는 관리자만 할 수 있어요. ' : '')+'매니저는 사이트에 가입한 사람 중에서만 올릴 수 있어요. 권한 체크는 바로 적용돼요.'}));
+}
+function timeSelect(v, on){ var e=h('select',{class:'tsel', onchange:function(ev){ on(ev.target.value); }}); TIMES.filter(function(t){ return /:(00|30)$/.test(t); }).concat(['24:00']).forEach(function(t){ e.append(h('option',{value:t, text:t, selected:t===v})); }); return e; }
+var setDraft=null;
+function dayLabelK(k){ var d=parseKey(k); return (d.getMonth()+1)+'/'+d.getDate()+'('+DOW[d.getDay()]+')'; }
+function dayPicker(C, again){   // 댓글을 열 날짜 고르기: 일정 있는 날 빠른 선택 + 날짜 직접 추가
+  C.days=C.days||[]; var today=keyOf(new Date()), lim=new Date(); lim.setDate(lim.getDate()+60); var limK=keyOf(lim);
+  var up=Object.keys(S.days).filter(function(k){ return k>=today && k<=limK && slotsOf(k).length; }).sort();
+  var di=h('input',{type:'date', class:'ef-in', style:'max-width:11rem'});
+  var tog=function(k){ var i=C.days.indexOf(k); if(i<0) C.days.push(k); else C.days.splice(i,1); C.days.sort(); again(); };
+  return h('div',{class:'dpick'},
+    h('div',{class:'muted', style:'font-size:.78rem;margin:.5rem 0 .3rem', text:'일정이 있는 날 (앞으로 60일) — 눌러서 고르기'}),
+    up.length? h('div',{class:'chips'}, up.map(function(k){ var on=C.days.indexOf(k)>=0; return h('button',{type:'button', class:'chip'+(on?' on g':''), onclick:function(){ tog(k); }}, dayLabelK(k)); })) : h('div',{class:'muted', style:'font-size:.78rem', text:'앞으로 60일 안에 일정이 없어요.'}),
+    h('div',{class:'dadd'}, di, h('button',{type:'button', class:'btn sm', onclick:function(){ if(!di.value) return; if(C.days.indexOf(di.value)<0) C.days.push(di.value); C.days.sort(); again(); }}, '＋ 날짜 추가')),
+    h('div',{class:'muted', style:'font-size:.78rem;margin:.4rem 0 .3rem', text:'고른 날 '+C.days.length+'일'}),
+    h('div',{class:'chips'}, C.days.map(function(k){ return h('button',{type:'button', class:'chip on g', title:'빼기', onclick:function(){ tog(k); }}, dayLabelK(k)+' ✕'); })));
 }
 function renderSettings(body){
-  var st=S.settings, photo = tmpPhoto!==null ? tmpPhoto : st.photo;
-  var fT=h('input',{value:st.title, maxlength:30}), fS=h('textarea',{maxlength:80}); fS.value=st.sub;
-  var fO=h('input',{value:L('o'), maxlength:8}), fG=h('input',{value:L('g'), maxlength:8});
-  var fA=h('input',{value:st.address||'', maxlength:80}), fLa=h('input',{value:st.lat||'', placeholder:'예) 37.1234', inputmode:'decimal'}), fLn=h('input',{value:st.lng||'', placeholder:'예) 127.1234', inputmode:'decimal'});
-  var file=h('input',{type:'file', accept:'image/*', style:'display:none', onchange:function(e){ var f=e.target.files[0]; if(f) shrink(f).then(function(u){ tmpPhoto=u; renderAdmin(); }).catch(function(){ toast('사진을 읽지 못했어요'); }); }});
-  var box=h('div',{class:'photo-box'+(photo?'':' nophoto'), style:photo?'background-image:url("'+photo+'")':'', text:'로그인 화면 사진'});
-  body.append(h('div',{class:'set-grid'},
-    h('div',null, box, h('div',{class:'acts'}, h('button',{class:'btn sm', onclick:function(){ file.click(); }}, '🖼 사진 바꾸기'), photo? h('button',{class:'btn sm danger', onclick:function(){ tmpPhoto=''; renderAdmin(); }}, '사진 빼기') : null, file)),
-    h('div',null,
-      h('label',{class:'field'}, h('span',{text:'학원 이름 (로그인 화면 큰 글씨)'}), fT),
-      h('label',{class:'field'}, h('span',{text:'소개 문구'}), fS),
-      h('div',{class:'lbl-row'},
-        h('label',{class:'field'}, h('span',null, h('span',{class:'dot o'}), ' 주황 동그라미 문구'), fO),
-        h('label',{class:'field'}, h('span',null, h('span',{class:'dot g'}), ' 초록 동그라미 문구'), fG)),
-      h('label',{class:'field'}, h('span',{text:'학원 주소 (맨 아래 · 지도 · 내비에 쓰여요)'}), fA),
-      h('div',{class:'lbl-row'}, h('label',{class:'field'}, h('span',{text:'위도 (선택, 내비 정확도↑)'}), fLa), h('label',{class:'field'}, h('span',{text:'경도 (선택)'}), fLn)))));
+  var st=S.settings, adm=isAdmin();
+  if(!setDraft || setDraft._bid!==S.bid) setDraft={_bid:S.bid, hours:JSON.parse(JSON.stringify(st.hours)), comments:JSON.parse(JSON.stringify(st.comments)), logo:st.logo||''};
+  var D=setDraft, again=function(){ renderAdmin(); };
+  var fT=h('input',{class:'ef-in', value:st.title, maxlength:NAME_MAX}), cnt=h('span',{class:'cnt', text:String(st.title||'').length+' / '+NAME_MAX});
+  var prev=h('b',{class:'nprev '+nameCls(st.title), text:st.title});
+  fT.addEventListener('input', function(){ cnt.textContent=fT.value.length+' / '+NAME_MAX; prev.textContent=fT.value||'학원 이름'; prev.className='nprev '+nameCls(fT.value); });
+  var fR=h('select',{class:'ef-in'}, REGIONS.map(function(r){ return h('option',{value:r[0], text:r[1], selected:st.region===r[0]}); }));
+  var fA=h('input',{class:'ef-in', value:st.address||'', maxlength:80}), fLa=h('input',{class:'ef-in', value:st.lat||'', placeholder:'예) 37.1234', inputmode:'decimal'}), fLn=h('input',{class:'ef-in', value:st.lng||'', placeholder:'예) 127.1234', inputmode:'decimal'});
+  var fO=h('input',{class:'ef-in', value:L('o'), maxlength:8}), fG=h('input',{class:'ef-in', value:L('g'), maxlength:8});
+  var file=h('input',{type:'file', accept:'image/*', style:'display:none', onchange:function(e){ var f=e.target.files[0]; if(f) shrink(f, 320).then(function(u){ D.logo=u; again(); }).catch(function(){ toast('사진을 읽지 못했어요'); }); }});
+  // ① 학원 정보
+  body.append(h('div',{class:'sbox'}, h('div',{class:'sbox-h', text:'① 학원 정보'}),
+    h('div',{class:'logo-row'}, h('span',{class:'bri-ico big'+(D.logo?' haslogo':''), style:D.logo?'background-image:url("'+D.logo+'")':''}),
+      h('div',{class:'acts'}, h('button',{type:'button', class:'btn sm', onclick:function(){ file.click(); }}, '🖼 로고 바꾸기'), D.logo? h('button',{type:'button', class:'btn sm danger', onclick:function(){ D.logo=''; again(); }}, '기본 로고로') : null, file)),
+    adm ? h('div',null,
+        h('label',{class:'field'}, h('span',null, '학원 이름 (띄어쓰기 포함 최대 12자) ', cnt), fT),
+        h('div',{class:'nprev-box'}, h('span',{class:'muted', text:'맨 위 미리보기 →'}), prev),
+        h('label',{class:'field'}, h('span',{text:'지역'}), fR),
+        h('label',{class:'field'}, h('span',{text:'주소 (맨 아래 · 지도 · 내비에 자동 연결)'}), fA),
+        h('div',{class:'lbl-row'}, h('label',{class:'field'}, h('span',{text:'위도 (선택)'}), fLa), h('label',{class:'field'}, h('span',{text:'경도 (선택)'}), fLn)))
+      : h('div',{class:'ro'}, h('b',{class:nameCls(st.title), text:st.title}), h('div',{class:'muted', text:(RNAME[st.region]||'')+' · '+(st.address||'')}), h('div',{class:'muted', style:'font-size:.75rem', text:'학원 이름 · 주소 변경은 사이트 관리자에게 요청해 주세요.'}))));
+  // ② 운영 시간
+  var H=D.hours, preset=function(k){ var on=function(x){ return {on:true,s:x.s,e:x.e}; }, off=function(x){ return {on:false,s:x.s,e:x.e}; };
+    var m={wd:[1,0,0,0], sat:[0,1,0,0], wdsat:[1,1,0,0], all:[1,1,1,0], y365:[1,1,1,1]}[k]; ['wd','sat','sun','hol'].forEach(function(t,i){ H[t]= m[i]? on(k==='y365'?H.wd:H[t]) : off(H[t]); }); again(); };
+  var rows=[['wd','평일 (월~금)'],['sat','토요일'],['sun','일요일'],['hol','공휴일']].map(function(r){ var x=H[r[0]];
+    return h('div',{class:'hrow'+(x.on?'':' off')}, h('span',{class:'hname', text:r[1]}),
+      h('div',{class:'seg hseg'}, h('button',{type:'button', class:x.on?'on':'', onclick:function(){ x.on=true; again(); }}, '운영'), h('button',{type:'button', class:x.on?'':'on', onclick:function(){ x.on=false; again(); }}, '휴무')),
+      x.on? h('span',{class:'htime'}, timeSelect(x.s,function(v){ x.s=v; again(); }), '~', timeSelect(x.e,function(v){ x.e=v; again(); })) : h('span',{class:'muted', text:'쉬는 날'})); });
+  body.append(h('div',{class:'sbox'}, h('div',{class:'sbox-h', text:'② 운영 시간'}),
+    h('div',{class:'chips preset'}, [['wd','평일만'],['sat','토요일만'],['wdsat','평일 + 토'],['all','평일 + 주말 (공휴일 휴무)'],['y365','365일']].map(function(x){ return h('button',{type:'button', class:'chip', onclick:function(){ preset(x[0]); }}, x[1]); })),
+    rows, h('div',{class:'hprev'}, '맨 위에 이렇게 보여요 → ', h('b',{text:hoursText(H)}))));
+  // ③ 동그라미 문구
+  body.append(h('div',{class:'sbox'}, h('div',{class:'sbox-h', text:'③ 동그라미 문구'}),
+    h('div',{class:'lbl-row'}, h('label',{class:'field'}, h('span',null, h('span',{class:'dot o'}), ' 주황'), fO), h('label',{class:'field'}, h('span',null, h('span',{class:'dot g'}), ' 초록'), fG))));
+  // ④ 댓글
+  var C=D.comments, y=new Date().getFullYear(), months=[]; for(var i=0;i<12;i++){ var dd=new Date(); dd.setDate(1); dd.setMonth(dd.getMonth()-1+i); months.push(dd.getFullYear()+'-'+pad(dd.getMonth()+1)); }
+  body.append(h('div',{class:'sbox'}, h('div',{class:'sbox-h', text:'④ 일정 댓글 (부모님 댓글 · 답글)'}),
+    h('div',{class:'seg cseg3 c4'}, [['off','끄기'],['all','전체 달력'],['months','고른 달'],['days','고른 날']].map(function(x){ return h('button',{type:'button', class:C.mode===x[0]?'on':'', onclick:function(){ C.mode=x[0]; again(); }}, x[1]); })),
+    C.mode==='days'? dayPicker(C, again) : null,
+    C.mode==='months'? h('div',{class:'chips'}, months.map(function(mk){ var on=C.months.indexOf(mk)>=0; return h('button',{type:'button', class:'chip'+(on?' on g':''), onclick:function(){ if(on) C.months=C.months.filter(function(x){ return x!==mk; }); else C.months.push(mk); again(); }}, (+mk.slice(5))+'월'+(mk.slice(0,4)!=String(y)?'('+mk.slice(2,4)+')':'')); })) : null,
+    h('div',{class:'muted', style:'font-size:.78rem;margin-top:.4rem', text: C.mode==='off'? '지금은 댓글을 쓸 수 없어요.' : '부모님이 일정에 댓글 · 답글을 달 수 있어요. 수정 · 삭제는 쓴 부모님과 원장님만 할 수 있어요.'})));
   body.append(h('div',{class:'mfoot'}, h('button',{class:'btn primary', onclick:function(){
     var labels={o:fO.value.trim()||'대회', g:fG.value.trim()||'연습'}, oldL={o:L('o'), g:L('g')};
-    Store.set('settings','main',{title:fT.value.trim()||'피아노 학원', sub:fS.value.trim(), photo:photo||'', labels:labels, address:fA.value.trim(), lat:fLa.value.trim(), lng:fLn.value.trim()}, true).catch(fail);
+    var data={hours:H, labels:labels, logo:D.logo||'', comments:{mode:C.mode, months:C.months.slice().sort(), days:(C.days||[]).slice().sort()}};
+    if(adm){ var nm=fT.value.trim(); if(!nm){ toast('학원 이름을 적어 주세요'); return; } Object.assign(data,{title:nm.slice(0,NAME_MAX), region:fR.value, address:fA.value.trim(), lat:fLa.value.trim(), lng:fLn.value.trim()}); }
+    Store.set('settings','main', data, true).catch(fail);
     ['o','g'].forEach(function(c){ if(labels[c]!==oldL[c]) logH('edit', (c==='o'?'주황':'초록')+' 동그라미 문구 '+oldL[c]+' → '+labels[c]); });
-    tmpPhoto=null; toast('저장했어요'); }}, '저장')));
+    logH('edit','학원 설정 저장 (운영시간: '+hoursText(H)+')'); setDraft=null; toast('저장했어요'); }}, '저장')));
 }
-function shrink(file){ return new Promise(function(ok,no){ var r=new FileReader(); r.onerror=no; r.onload=function(){ var img=new Image(); img.onerror=no; img.onload=function(){
-  var max=1400, k=Math.min(1, max/Math.max(img.width,img.height)), c=document.createElement('canvas'); c.width=Math.round(img.width*k); c.height=Math.round(img.height*k);
+
+/* ───────── 운영비 (연회비 · 부가세 · 계좌 연동) ─────────
+   ※ 실제 자동이체 출금은 결제대행(CMS · PG) 계약 후 앱 서버에서 처리. 지금은 신청 정보 · 납부 일정만 저장 */
+var BANKS=['KB국민','신한','우리','하나','NH농협','IBK기업','카카오뱅크','토스뱅크','케이뱅크','SC제일','새마을금고','우체국','수협','부산','대구','광주','전북','경남','제주','신협'];
+var PLANS=[['y1','연 1회 (일시납)',1,12],['h2','6개월마다 (연 2회)',2,6],['q4','3개월마다 (연 4회)',4,3]];
+var PAYDAYS=[5,15,25];
+function won(n){ return Math.round(n).toLocaleString('ko-KR')+'원'; }
+var feeDraft=null;
+function renderFee(body){
+  var b=curBranch()||{}, bill=S.billing||{}, adm=isAdmin(), fee=+b.fee||1200000;
+  if(!feeDraft || feeDraft._bid!==S.bid) feeDraft={_bid:S.bid, plan:bill.plan||'y1', day:bill.day||5, start:bill.start||(new Date().getFullYear()+1)+'-01', bank:bill.bank||'', acct:'', holder:bill.holder||'', agree:false};
+  var F=feeDraft, pl=PLANS.filter(function(x){ return x[0]===F.plan; })[0], per=fee/pl[2], vat=per*0.1, again=function(){ renderAdmin(); };
+  body.append(h('div',{class:'sbox'}, h('div',{class:'sbox-h', text:'연회비 (부가세 포함)'}),
+    h('table',{class:'feet'}, h('tr',null, h('td',{text:'연회비 (공급가)'}), h('td',{text:won(fee)})), h('tr',null, h('td',{text:'부가세 (10%)'}), h('td',{text:won(fee*0.1)})), h('tr',{class:'sum'}, h('td',{text:'합계 (1년)'}), h('td',{text:won(fee*1.1)}))),
+    adm? h('div',{class:'muted', style:'font-size:.78rem', text:'연회비 금액은 지점 관리 → 수정에서 바꿀 수 있어요.'}) : null));
+  var starts=[]; for(var i=0;i<12;i++){ var d=new Date(); d.setDate(1); d.setMonth(d.getMonth()+1+i); starts.push(d.getFullYear()+'-'+pad(d.getMonth()+1)); }
+  var sched=[]; for(var j=0;j<pl[2];j++){ var p=F.start.split('-').map(Number), dt=new Date(p[0], p[1]-1+j*pl[3], F.day); sched.push(dt); }
+  body.append(h('div',{class:'sbox'}, h('div',{class:'sbox-h', text:'① 납부 방식 (3가지 중 선택)'}),
+    h('div',{class:'plans'}, PLANS.map(function(x){ var pp=fee/x[2]; return h('button',{type:'button', class:'plan'+(F.plan===x[0]?' on':''), onclick:function(){ F.plan=x[0]; again(); }},
+      h('b',{text:x[1]}), h('span',{text:'회당 '+won(pp*1.1)}), h('small',{text:'공급가 '+won(pp)+' + 부가세 '+won(pp*0.1)})); })),
+    h('div',{class:'sbox-h', style:'margin-top:.7rem', text:'② 납부일 (3가지 중 선택)'}),
+    h('div',{class:'seg cseg3'}, PAYDAYS.map(function(x){ return h('button',{type:'button', class:F.day===x?'on':'', onclick:function(){ F.day=x; again(); }}, '매 회 '+x+'일'); })),
+    h('label',{class:'field', style:'margin-top:.6rem'}, h('span',{text:'첫 납부 달'}), h('select',{class:'ef-in', onchange:function(e){ F.start=e.target.value; again(); }}, starts.map(function(mk){ return h('option',{value:mk, text:mk.replace('-','년 ')+'월', selected:F.start===mk}); }))),
+    h('div',{class:'sched'}, h('div',{class:'sbox-h', text:'납부 일정 미리보기'}), sched.map(function(dt,i){ return h('div',{class:'srow'}, h('span',{text:(i+1)+'회'}), h('span',{text:dt.getFullYear()+'.'+pad(dt.getMonth()+1)+'.'+pad(dt.getDate())}), h('b',{text:won(per+vat)}), h('small',{text:'(부가세 '+won(vat)+' 포함)'})); }))));
+  var acctIn=h('input',{class:'ef-in', inputmode:'numeric', placeholder: bill.acctMasked? '연동됨: '+bill.acctMasked+' (바꾸려면 새로 입력)' : '계좌번호 (숫자만)', maxlength:20});
+  acctIn.addEventListener('input', function(){ acctIn.value=acctIn.value.replace(/[^0-9]/g,''); F.acct=acctIn.value; });
+  var holder=h('input',{class:'ef-in', value:F.holder, placeholder:'예금주 (원장님 또는 사업자 명의)', maxlength:20}); holder.addEventListener('input', function(){ F.holder=holder.value; });
+  var agree=h('input',{type:'checkbox', checked:F.agree, onchange:function(e){ F.agree=e.target.checked; }});
+  body.append(h('div',{class:'sbox'}, h('div',{class:'sbox-h', text:'③ 출금 계좌 연동'}),
+    bill.status? h('div',{class:'bill-st '+(bill.status==='active'?'ok':''), text: bill.status==='active'? '✅ 자동이체 연동 완료 · '+bill.bank+' '+bill.acctMasked : '⏳ 연동 신청됨 · '+bill.bank+' '+bill.acctMasked+' · '+fmtDT(bill.requestedAt)}) : null,
+    h('label',{class:'field'}, h('span',{text:'은행'}), h('select',{class:'ef-in', onchange:function(e){ F.bank=e.target.value; }}, [h('option',{value:'', text:'은행을 골라 주세요'})].concat(BANKS.map(function(x){ return h('option',{value:x, text:x, selected:F.bank===x}); })))),
+    h('label',{class:'field'}, h('span',{text:'계좌번호'}), acctIn), h('label',{class:'field'}, h('span',{text:'예금주'}), holder),
+    h('label',{class:'remember', style:'white-space:normal'}, agree, ' 위 일정대로 연결된 계좌에서 운영비(부가세 포함)가 자동으로 출금되는 것에 동의합니다.'),
+    h('div',{class:'muted', style:'font-size:.75rem;line-height:1.5', text:'※ 실제 자동 출금은 결제대행(CMS · PG) 계약 후 시작돼요. 지금은 신청 정보와 납부 일정만 저장돼요. 받는 곳: ORDA 본사(사이트 관리자 계좌).'}),
+    h('div',{class:'mfoot'}, h('button',{class:'btn primary', onclick:function(){
+      if(!F.bank){ toast('은행을 골라 주세요'); return; }
+      if(!F.acct && !bill.acctMasked){ toast('계좌번호를 적어 주세요'); return; }
+      if(F.acct && F.acct.length<8){ toast('계좌번호를 다시 확인해 주세요'); return; }
+      if(!F.holder.trim()){ toast('예금주를 적어 주세요'); return; }
+      if(!F.agree){ toast('자동 출금 동의에 체크해 주세요'); return; }
+      var data={plan:F.plan, day:F.day, start:F.start, bank:F.bank, holder:F.holder.trim(), feeSupply:fee, vatRate:0.1, perPay:Math.round(per*1.1), schedule:sched.map(function(dt){ return keyOf(dt); }),
+        status: bill.status==='active'?'active':'requested', requestedAt:Date.now(), requestedBy:myName(), agreedAt:Date.now()};
+      if(F.acct){ data.acct=F.acct; data.acctMasked=F.acct.slice(0,3)+'-****-'+F.acct.slice(-4); }
+      Store.set('billing', S.bid, data, true).catch(fail); logH('edit','운영비 납부 설정 · 계좌 연동 신청 ('+pl[1]+', 매 회 '+F.day+'일)'); feeDraft=null; toast('계좌 연동을 신청했어요'); }}, '💳 계좌 연동하기'))));
+}
+
+/* ───────── 지점 관리 (사이트 관리자) ───────── */
+var baQ='', baR='all';
+function renderBranchAdmin(body){
+  var on=!!S.app.feeOn;
+  body.append(h('div',{class:'sbox site-set'}, h('div',{class:'sbox-h', text:'⚙ 사이트 설정 (모든 지점에 적용)'}),
+    h('div',{class:'hrow', style:'border:0'}, h('span',{class:'hname', style:'width:auto;flex:1', text:'💳 운영비 (연회비 납부 · 계좌 연동)'}),
+      h('div',{class:'seg hseg'}, h('button',{type:'button', class:on?'on':'', onclick:function(){ if(on) return; Store.set('meta','app',{feeOn:true, feeAt:Date.now(), feeBy:myName()},true).catch(fail); toast('운영비 기능을 켰어요. 원장님 화면에 💳 운영비 탭이 보여요'); }}, '켜기'),
+        h('button',{type:'button', class:on?'':'on', onclick:function(){ if(!on) return; if(!confirm('운영비 기능을 끌까요?\n원장님 화면에서 💳 운영비 탭이 사라져요. (이미 저장된 신청 정보는 지워지지 않아요)')) return; Store.set('meta','app',{feeOn:false, feeAt:Date.now(), feeBy:myName()},true).catch(fail); toast('운영비 기능을 껐어요'); }}, '끄기'))),
+    h('div',{class:'muted', style:'font-size:.75rem', text: on? '지금 켜져 있어요 — 원장님이 운영비 탭에서 납부 방식 · 납부일 · 계좌를 정할 수 있어요.' : '지금 꺼져 있어요 — 원장님 화면에 운영비 탭이 보이지 않아요.'})));
+  var inp=h('input',{class:'ef-in', placeholder:'학원 이름 · 주소 검색', value:baQ, autocomplete:'off'}); inp.addEventListener('input', function(){ baQ=inp.value; draw(); });
+  body.append(h('div',{class:'ba-top'}, h('div',{class:'brbar', style:'flex:1'}, h('span',{class:'brq-ico', html:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'}), inp),
+    h('button',{class:'btn primary sm', onclick:function(){ openBranchEdit(null); }}, '＋ 지점 추가')));
+  body.append(regionSeg(baR, function(r){ baR=r; renderAdmin(); }));
+  var cnt=h('div',{class:'muted', style:'font-size:.8rem;margin:.3rem 0'}), list=h('div',{class:'balist'}); body.append(cnt, list);
+  function draw(){ list.innerHTML=''; var arr=sortBranches(S.branches).filter(function(b){ return branchMatch(b,baQ,baR); });
+    cnt.textContent='전체 '+S.branches.length+'곳 · 보이는 곳 '+arr.length+'곳';
+    arr.forEach(function(b){ list.append(h('div',{class:'barow'},
+      h('span',{class:'bri-ico'+(b.logo?' haslogo':''), style:b.logo?'background-image:url("'+b.logo+'")':''}),
+      h('div',{class:'bri-t'}, h('b',{class:nameCls(b.title), text:b.title}), b.temp? h('span',{class:'tmp', text:'임시'}) : null,
+        h('small',{text:(RNAME[b.region]||'-')+' · '+(b.address||'주소 없음')}),
+        h('small',{text:'원장: '+(b.ownerName||'미지정')+' · 연회비 '+won((+b.fee||0)*1.1)+' (부가세 포함)'})),
+      h('div',{class:'acts'},
+        h('button',{class:'btn sm', onclick:function(){ switchBranch(b._id); closeModal('mAdmin'); }}, '들어가기'),
+        h('button',{class:'btn sm', onclick:function(){ openBranchEdit(b); }}, '수정'),
+        h('button',{class:'btn sm primary', onclick:function(){ openVerify(b._id, null); }}, '원장 지정'),
+        h('button',{class:'btn sm danger', onclick:function(){ if(!confirm('"'+b.title+'" 지점을 삭제할까요?\n이 지점의 일정 · 명단 · 회원 연결이 모두 끊어져요.')) return; if(!confirm('정말 삭제할까요? 되돌릴 수 없어요.')) return;
+          Store.del('branches', b._id).catch(fail); toast('삭제했어요'); if(S.bid===b._id){ S.bid=null; var nx=S.branches.filter(function(x){ return x._id!==b._id; })[0]; if(nx) switchBranch(nx._id); } }}, '삭제')))); }); }
+  draw();
+}
+function openBranchEdit(b){
+  var isNew=!b; b=b||{title:'', region:'gg', address:'', fee:1200000, hours:defHours()};
+  $('#beTitle').textContent= isNew? '🏫 지점 추가' : '🏫 지점 수정';
+  var body=$('#beBody'); body.innerHTML='';
+  var fT=h('input',{class:'ef-in', value:b.title, maxlength:NAME_MAX, placeholder:'예) 오르다 동탄2점'}), cnt=h('span',{class:'cnt', text:String(b.title).length+' / '+NAME_MAX}), prev=h('b',{class:'nprev '+nameCls(b.title), text:b.title||'학원 이름'});
+  fT.addEventListener('input', function(){ cnt.textContent=fT.value.length+' / '+NAME_MAX; prev.textContent=fT.value||'학원 이름'; prev.className='nprev '+nameCls(fT.value); });
+  var fR=h('select',{class:'ef-in'}, REGIONS.map(function(r){ return h('option',{value:r[0], text:r[1], selected:b.region===r[0]}); }));
+  var fA=h('input',{class:'ef-in', value:b.address||'', placeholder:'예) 경기 화성시 동탄대로 446'}), fLa=h('input',{class:'ef-in', value:b.lat||'', inputmode:'decimal', placeholder:'위도 (선택)'}), fLn=h('input',{class:'ef-in', value:b.lng||'', inputmode:'decimal', placeholder:'경도 (선택)'});
+  var fF=h('input',{class:'ef-in', value:b.fee||1200000, inputmode:'numeric'});
+  body.append(h('label',{class:'field'}, h('span',null, '학원 이름 (띄어쓰기 포함 최대 12자) ', cnt), fT), h('div',{class:'nprev-box'}, h('span',{class:'muted', text:'맨 위 미리보기 →'}), prev),
+    h('label',{class:'field'}, h('span',{text:'지역'}), fR), h('label',{class:'field'}, h('span',{text:'주소 (맨 아래 주소 · 지도 · 내비에 자동 연결)'}), fA),
+    h('div',{class:'lbl-row'}, h('label',{class:'field'}, h('span',{text:'위도'}), fLa), h('label',{class:'field'}, h('span',{text:'경도'}), fLn)),
+    h('label',{class:'field'}, h('span',{text:'연회비 공급가 (원, 부가세 별도)'}), fF),
+    h('div',{class:'mfoot'}, h('button',{class:'btn', 'data-close':'mBranchEdit'}, '취소'), h('button',{class:'btn primary', onclick:function(){
+      var nm=fT.value.trim(); if(!nm){ toast('학원 이름을 적어 주세요'); return; } if(!fA.value.trim()){ toast('주소를 적어 주세요'); return; }
+      var data={title:nm.slice(0,NAME_MAX), region:fR.value, address:fA.value.trim(), lat:fLa.value.trim(), lng:fLn.value.trim(), fee:+String(fF.value).replace(/[^0-9]/g,'')||0, temp:false};
+      if(isNew){ data.hours=defHours(); data.createdAt=Date.now(); data.order=S.branches.length+1; Store.set('branches', 'b'+rid(), data).catch(fail); }
+      else Store.set('branches', b._id, data, true).catch(fail);
+      closeModal('mBranchEdit'); toast(isNew?'지점을 추가했어요':'저장했어요'); }}, '저장')));
+  openModal('mBranchEdit');
+}
+
+/* ───────── 원장 확인 · 권한 부여 (사이트 관리자) ─────────
+   성함 · 연락처 · 사업자 주소지 · 사업자 등록번호 · 주민등록번호 앞자리(생년월일) 를 확인한 뒤에만 원장 권한을 줄 수 있어요.
+   ※ 사업자 번호는 지금 '검증번호' 계산으로 확인해요. 앱 단계에서 국세청 사업자 상태 조회(공공데이터 API)를 붙일 수 있어요. */
+function bizOk(n){ n=String(n).replace(/[^0-9]/g,''); if(n.length!==10) return false; var w=[1,3,7,1,3,7,1,3,5], s=0;
+  for(var i=0;i<9;i++) s+= (+n[i])*w[i]; s+= Math.floor((+n[8])*5/10); return (10 - s%10)%10 === +n[9]; }
+function birthOk(b){ b=String(b); if(!/^\d{6}$/.test(b)) return false; var yy=+b.slice(0,2), mm=+b.slice(2,4), dd=+b.slice(4,6), cy=new Date().getFullYear()%100;
+  var y=(yy>cy?1900:2000)+yy, d=new Date(y,mm-1,dd); return d.getFullYear()===y && d.getMonth()===mm-1 && d.getDate()===dd && (new Date().getFullYear()-y)>=19; }
+function phoneOk(p){ return /^01[016789]-?\d{3,4}-?\d{4}$/.test(String(p).trim()); }
+var vf=null;
+function openVerify(bid, user){
+  vf={bid:bid, uid:user?user._id:'', user:user, users:[], f:{name:user?user.name:'', phone:'', bizAddr:'', bizNo:'', birth:''}, checked:null};
+  var b=S.branches.filter(function(x){ return x._id===bid; })[0]||{};
+  var un=Store.watchCol('users', function(arr){ vf.users=arr.filter(function(u){ return u.role!=='master' && u.role!=='admin' && u.active!==false || u.pending; }); if(!vf.user && vf.uid) vf.user=arr.filter(function(u){ return u._id===vf.uid; })[0]; renderVerify(b); }, {where:['branchId', bid]});
+  setTimeout(function(){ try{ un(); }catch(e){} }, 1500);
+  renderVerify(b); openModal('mVerify');
+}
+function renderVerify(b){
+  var body=$('#vfBody'); body.innerHTML=''; var F=vf.f, ck=vf.checked;
+  var inp=function(k,ph,extra){ var e=h('input',Object.assign({class:'ef-in', value:F[k], placeholder:ph}, extra||{})); e.addEventListener('input', function(){ F[k]=e.value; vf.checked=null; renderVerifyBtn(); }); return e; };
+  var sel=h('select',{class:'ef-in', onchange:function(e){ vf.uid=e.target.value; vf.user=vf.users.filter(function(u){ return u._id===vf.uid; })[0]||null; if(vf.user) F.name=vf.user.name; vf.checked=null; renderVerify(b); }},
+    [h('option',{value:'', text: vf.users.length? '원장님이 될 가입자를 골라 주세요' : '이 지점에 가입한 사람이 아직 없어요'})].concat(vf.users.map(function(u){ return h('option',{value:u._id, text:u.name+' ('+u.id+')'+(u.pending?' · 승인 대기':''), selected:u._id===vf.uid}); })));
+  body.append(h('div',{class:'vf-b'}, h('b',{class:nameCls(b.title), text:b.title||''}), h('small',{text:' '+(b.address||'')})));
+  body.append(h('label',{class:'field'}, h('span',{text:'원장님 계정 (먼저 이 지점으로 가입해야 해요)'}), sel));
+  body.append(h('div',{class:'lbl-row'}, h('label',{class:'field'}, h('span',{text:'성함'}), inp('name','예) 김혜나')), h('label',{class:'field'}, h('span',{text:'연락처'}), inp('phone','010-0000-0000',{inputmode:'tel'}))));
+  body.append(h('label',{class:'field'}, h('span',{text:'사업자 주소지'}), inp('bizAddr','사업자 등록증의 주소')));
+  body.append(h('div',{class:'lbl-row'}, h('label',{class:'field'}, h('span',{text:'사업자 등록번호 (10자리)'}), inp('bizNo','000-00-00000',{inputmode:'numeric'})), h('label',{class:'field'}, h('span',{text:'주민등록번호 앞 6자리'}), inp('birth','예) 850315',{inputmode:'numeric', maxlength:6}))));
+  if(ck) body.append(h('div',{class:'vf-res'}, ck.map(function(c){ return h('div',{class:'vf-i '+(c[1]?'ok':'no')}, h('span',{text:c[1]?'✓':'✗'}), c[0]); })));
+  body.append(h('div',{class:'muted', style:'font-size:.74rem;line-height:1.5', text:'※ 사업자 번호는 검증번호로 확인해요(앱 단계에서 국세청 조회 연결 예정). 입력한 정보는 사이트 관리자만 볼 수 있어요.'}));
+  body.append(h('div',{class:'mfoot', id:'vfBtns'})); renderVerifyBtn();
+}
+function renderVerifyBtn(){
+  var box=$('#vfBtns'); if(!box) return; box.innerHTML=''; var allOk = vf.checked && vf.checked.every(function(c){ return c[1]; });
+  box.append(h('button',{class:'btn', onclick:function(){ var F=vf.f, u=vf.user, b=S.branches.filter(function(x){ return x._id===vf.bid; })[0]||{}, a1=String(F.bizAddr).trim().split(/\s+/).slice(0,2).join(' '), a2=String(b.address||'').split(/\s+/).slice(0,2).join(' ');
+    vf.checked=[['원장님 계정을 골랐어요', !!u], ['성함이 가입 정보와 같아요 ('+(u?u.name:'-')+')', !!u && String(F.name).trim()===u.name], ['연락처 형식 (010-0000-0000)', phoneOk(F.phone)],
+      ['사업자 주소지 입력'+(a1&&a1===a2?' · 지점 주소와 같은 지역':''), String(F.bizAddr).trim().length>=6], ['사업자 등록번호 검증번호 확인', bizOk(F.bizNo)], ['생년월일(앞 6자리)이 맞는 날짜 · 만 19세 이상', birthOk(F.birth)]];
+    renderVerify(b); }}, '🔎 확인하기'),
+    h('button',{class:'btn primary', disabled:!allOk, onclick:function(){ var F=vf.f, u=vf.user, b=S.branches.filter(function(x){ return x._id===vf.bid; })[0]||{};
+      Store.set('private', vf.bid, {owner:{uid:u._id, id:u.id, name:F.name.trim(), phone:F.phone.trim(), bizAddr:F.bizAddr.trim(), bizNo:F.bizNo.replace(/[^0-9]/g,''), birth6:F.birth, checkedAt:Date.now(), checkedBy:myName()}}, true).catch(fail);
+      Store.set('users', u._id, {role:'master', active:true, pending:false, perms:{}, branchId:vf.bid, approvedAt:Date.now()}, true).catch(fail);
+      Store.set('branches', vf.bid, {ownerUid:u._id, ownerName:u.name}, true).catch(fail);
+      closeModal('mVerify'); toast(u.name+' 님을 '+(b.title||'')+' 원장으로 지정했어요'); }}, '👑 원장 권한 부여'));
+}
+
+function shrink(file, maxPx){ return new Promise(function(ok,no){ var r=new FileReader(); r.onerror=no; r.onload=function(){ var img=new Image(); img.onerror=no; img.onload=function(){
+  var max=maxPx||1400, k=Math.min(1, max/Math.max(img.width,img.height)), c=document.createElement('canvas'); c.width=Math.round(img.width*k); c.height=Math.round(img.height*k);
   c.getContext('2d').drawImage(img,0,0,c.width,c.height); ok(c.toDataURL('image/jpeg',0.72)); }; img.src=r.result; }; r.readAsDataURL(file); }); }
 
 /* ───────── 방문 스탬프 ───────── */
@@ -1502,12 +1952,12 @@ function seedDemo(st){
   var db=st._db, T=new Date(), y=T.getFullYear(), m=T.getMonth(), dk=function(d){ return keyOf(new Date(y,m,d)); };
   var at=function(d,hh,mm){ return new Date(y,m,d,hh,mm).getTime(); };
   db.acc={a:{uid:'ua'}, b:{uid:'ub'}, c:{uid:'uc'}, d:{uid:'ud'}, e:{uid:'ue'}};
-  db.cols.users={ ua:{id:'a', name:'김혜나', role:'master', perms:{}, active:true}, ub:{id:'b', name:'박선생', role:'manager', perms:{roster:true, export:true, calendar:true}, active:true},
+  db.cols.users={ uz:{id:'orda-admin', name:'사이트 관리자', type:'admin', role:'admin', perms:{}, active:true}, ua:{id:'a', name:'김혜나', type:'teacher', role:'master', perms:{}, active:true}, ub:{id:'b', name:'박선생', role:'manager', perms:{roster:true, export:true, calendar:true}, active:true},
     uc:{id:'c', name:'이선생', role:'manager', perms:{roster:true, export:false, calendar:false}, active:true}, ud:{id:'d', name:'최보조', type:'teacher', role:'member', perms:{}, active:true}, ue:{id:'e', name:'정은정', type:'parent', children:[{name:'키티',gender:'f'}], role:'member', perms:{}, active:true} };
   ['ub','uc'].forEach(function(k){ db.cols.users[k].type='teacher'; });
   db.cols.roster={ main:{ all:['김혜나','뚱이','중걸','마리','도겸','진욱','키티','성민'], o:['김혜나','뚱이','중걸','마리','도겸'], g:['진욱','키티','성민','마리'], gender:{'김혜나':'f','뚱이':'m','중걸':'m','마리':'f','도겸':'m','진욱':'m','키티':'f','성민':'m'} } };
   var O=db.cols.roster.main.o, G=db.cols.roster.main.g, D={};
-  var td=T.getDate(), put=function(d, arr){ if(d<1||d>new Date(y,m+1,0).getDate()) return; if(new Date(y,m,d).getDay()===0) return; D[dk(d)]={slots:arr.map(function(a,i){ return {sid:'s'+d+i, start:a[0], end:a[1], color:a[2], names:a[3], title:a[4]||'', place:a[5]||'', note:a[6]||''}; })}; };
+  var td=T.getDate(), put=function(d, arr){ if(d<1||d>new Date(y,m+1,0).getDate()) return; D[dk(d)]={slots:arr.map(function(a,i){ return {sid:'s'+d+i, start:a[0], end:a[1], color:a[2], names:a[3], title:a[4]||'', place:a[5]||'', note:a[6]||''}; })}; };
   put(td, [['16:30','16:50','o',O.slice(0,7)],['17:00','17:30','g',G.slice(0,4)],['18:00','18:30','g',G.slice(3,7)],['18:30','19:00','o',O.slice(2,5)]]);
   put(3, [['16:00','16:40','g',G.slice(0,3)]]); put(4, [['17:00','17:20','o',O.slice(0,2)],['18:00','18:30','g',G.slice(1,5)]]);
   put(10, [['16:30','17:00','o',O.slice(1,6)]]); put(12, [['16:30','16:50','o',O.slice(0,4)],['17:00','17:40','g',G.slice(0,6)],['18:00','18:20','g',G.slice(2,4)]]);
@@ -1527,7 +1977,7 @@ function seedDemo(st){
   add('uc',[at(3,16,1),at(10,16,30),at(td,10,10)]); add('ud',[at(td,9,0)]); add('ua',[at(1,8,0),at(td,8,30),at(td,11,51)]);
   if(m>0){ var pm=y+'-'+pad(m); V['ub_'+pm]={uid:'ub', month:pm, times:[new Date(y,m-1,6,9,0).getTime(), new Date(y,m-1,13,10,0).getTime(), new Date(y,m-1,13,17,0).getTime(), new Date(y,m-1,20,9,30).getTime()]}; }
   db.cols.visits=V;
-  db.cols.meta={master:{uid:'ua', at:Date.now()}};
+  db.cols.meta={admin:{uid:'uz', at:Date.now()}, app:{feeOn: DEMO!=='demo-fee-off'}};
   db.cols.feedback={
     f1:{from:'ub', fromName:'박선생', to:'ua', toName:'김혜나', text:'원장님, 12일 연습 명단에 성민 학생 추가 부탁드려요. 어머님께서 연락 주셨어요.', at:at(td,11,42), read:false},
     f2:{from:'uc', fromName:'이선생', to:'ua', toName:'김혜나', text:'콩쿠르 당일 차량은 2대로 준비하면 될 것 같습니다.', at:at(td,9,15), read:false},
@@ -1540,9 +1990,25 @@ function seedDemo(st){
   var nt=function(id,ch,d,a,b,c,t,pl,no,hh,mm,rd){ db.cols.feedback[id]={from:'ua', fromName:'오르다 음악 학원 알림', to:'ue', toName:'정은정', kind:'notice', change:ch, child:'키티', notice:{date:dk(d), start:a, end:b, color:c, label:c==='o'?'대회':'연습', title:t, place:pl, note:no}, text:'키티 학생 '+(m+1)+'월 '+d+'일 '+a+'~'+b+' '+(c==='o'?'대회':'연습')+' 「'+t+'」 '+(ch==='add'?'일정이 추가되었어요':'일정이 바뀌었어요'), at:at(td,hh,mm), read:!!rd}; };
   nt('n1','add',Math.min(td+2,28),'17:00','17:40','g','콩쿠르 곡 마무리 연습','오르다 음악 학원 3번 연습실','악보와 메트로놈을 챙겨 주세요.',10,41);
   nt('n2','edit',Math.min(td+7,28),'16:30','17:10','o','제12회 경기 청소년 피아노 콩쿠르','수원 SK아트리움 소공연장','연주복(흰 블라우스·검정 치마)을 입고 와 주세요.\n시작 30분 전까지 도착해 주세요.',9,5);
-  if(DEMO==='demo-member') st._setSession('ud');
+  db.acc['orda-admin']={uid:'uz'};
+  db.cols.branches=sampleBranches(); db.cols.branches.b1.ownerUid='ua'; db.cols.branches.b1.ownerName='김혜나';
+  db.cols.branches.b1.comments={mode:'all', months:[]};
+  Object.keys(db.cols.users).forEach(function(k){ if(k!=='uz') db.cols.users[k].branchId='b1'; });
+  db.cols.users.ux={id:'x', name:'한서윤', type:'teacher', role:'member', perms:{}, active:false, pending:true, branchId:'b2', createdAt:at(td,8,40)};
+  ['roster','days','history','feedback','visits'].forEach(function(c){ db.cols['branches/b1/'+c]=db.cols[c]; delete db.cols[c]; });
+  var sk=dk(td), s0='s'+td+'0';
+  db.cols['branches/b1/comments']={
+    c1:{date:sk, sid:s0, parent:null, text:'연주복은 흰 블라우스에 검정 치마면 될까요? 구두도 신어야 하나요?', by:'정은정', byUid:'ue', byRole:'parent', at:at(td,8,12)},
+    c2:{date:sk, sid:s0, parent:'c1', text:'네, 맞아요. 굽 낮은 검정 구두면 좋아요 😊', by:'김혜나', byUid:'ua', byRole:'master', at:at(td,8,40), editedAt:at(td,8,52), editedBy:'김혜나'},
+    c3:{date:sk, sid:s0, parent:null, text:'', by:'전미경', byUid:'uf', byRole:'parent', at:at(td,9,2), deleted:true, deletedAt:at(td,9,10), deletedBy:'김혜나'},
+    c4:{date:sk, sid:s0, parent:null, text:'저희 아이는 30분 늦게 도착할 것 같아요. 순서 조정 가능할까요?', by:'정은정', byUid:'ue', byRole:'parent', at:at(td,9,30)} };
+  db.cols.billing={b1:{plan:'y1', day:5, start:(y+1)+'-01', bank:'KB국민', holder:'김혜나', acctMasked:'123-****-5678', status:'requested', requestedAt:at(td,9,0), feeSupply:1200000}};
+  db.cols['private']={b1:{owner:{uid:'ua', name:'김혜나', phone:'010-1234-5678', bizAddr:'경기 용인시 기흥구 새천년로26번길 2', bizNo:'2208162517', birth6:'850315', checkedAt:at(td,8,0), checkedBy:'사이트 관리자'}}};
+  if(DEMO==='demo-member'||DEMO==='demo-fbnew-member') st._setSession('ud');
+  else if(DEMO.indexOf('demo-adm-')===0) st._setSession('uz');
+  else if(DEMO==='demo-cmt-parent') st._setSession('ue');
   else if(DEMO==='demo-parent'||DEMO==='demo-notice'||DEMO==='demo-parent-fb') st._setSession('ue');
-  else if(DEMO.indexOf('demo-login')!==0 && DEMO!=='demo-pending' && DEMO!=='demo-remember' && DEMO.indexOf('demo-join')!==0) st._setSession('ua');
+  else if(DEMO.indexOf('demo-login')!==0 && DEMO!=='demo-pending' && DEMO!=='demo-remember' && DEMO!=='demo-admin-taken' && DEMO.indexOf('demo-join')!==0) st._setSession('ua');
   if(/-shine$/.test(DEMO)){ var fz=document.createElement('style'); fz.textContent='.logo-ink{animation:none!important;background-position:42% 0!important}'; document.head.appendChild(fz); }
 }
 function demoAfterLogin(){ if(!DEMO) return; setTimeout(function(){
@@ -1558,7 +2024,19 @@ function demoAfterLogin(){ if(!DEMO) return; setTimeout(function(){
   if(DEMO==='demo-hist') setPanel('history');
   if(DEMO==='demo-parent-fb') setPanel('feedback');
   if(DEMO==='demo-notice'){ setPanel('feedback'); var nn=S.fbIn.filter(function(x){ return x._id==='n2'; })[0]; if(nn) openFbView(nn, true); }
-  if(DEMO==='demo-admin-pend'){ $('#btnAdmin').onclick(); }
+  if(DEMO==='demo-admin-pend'||DEMO==='demo-adm-users'){ $('#btnAdmin').onclick(); }
+  if(DEMO==='demo-adm-set'){ $('#btnAdmin').onclick(); adminTab='set'; renderAdmin(); }
+  if(DEMO==='demo-branches'||DEMO==='demo-adm-pick') openBranchList(false);
+  if(DEMO==='demo-adm-search'){ brQ='경기'; openBranchList(true); }
+  if(DEMO==='demo-adm-br'){ $('#btnAdmin').onclick(); adminTab='branches'; renderAdmin(); }
+  if(DEMO==='demo-adm-edit'){ openBranchEdit(S.branches.filter(function(b){ return b._id==='b1'; })[0]); }
+  if(DEMO==='demo-adm-verify'){ openVerify('b1', null); setTimeout(function(){ var u=S.users.filter(function(x){ return x._id==='ug'; })[0]; vf.uid='ug'; vf.user=u; vf.users=S.users.filter(function(x){ return x.pending||x.role==='member'; });
+      Object.assign(vf.f,{name:'오세린', phone:'010-2345-6789', bizAddr:'경기 용인시 기흥구 새천년로26번길 2', bizNo:'2208162517', birth:'880512'}); renderVerify(curBranch()); document.querySelector('#vfBtns .btn').click(); }, 200); }
+  if(DEMO==='demo-set'||DEMO==='demo-fee-off'){ $('#btnAdmin').onclick(); adminTab='set'; renderAdmin(); }
+  if(DEMO==='demo-set-days'){ $('#btnAdmin').onclick(); adminTab='set'; renderAdmin(); var t=new Date(); setDraft.comments={mode:'days', months:[], days:[keyOf(t), keyOf(new Date(t.getFullYear(),t.getMonth(),Math.min(t.getDate()+6,28)))]}; renderAdmin(); setTimeout(function(){ var sb=document.querySelectorAll('#mAdminBody .sbox'); if(sb[3]) sb[3].scrollIntoView(); },50); }
+  if(DEMO==='demo-fee'){ $('#btnAdmin').onclick(); adminTab='fee'; renderAdmin(); }
+  if(DEMO==='demo-cmt'||DEMO==='demo-cmt-parent'){ S.openTh[keyOf(new Date())+'|s'+new Date().getDate()+'0']=true; renderSide(); if(DEMO==='demo-cmt-parent'){ cmtReply='c4'; renderSide(); } }
+  if(DEMO==='demo-fbnew-member'){ setPanel('feedback'); openFbCompose(); }
   if(DEMO==='demo-fbnew'){ setPanel('feedback'); openFbCompose(); }
   if(DEMO==='demo-fbread'){ setPanel('feedback'); openFbView(S.fbIn.filter(function(x){return x._id==='f1';})[0], true); }
   if(DEMO==='demo-fbafter'){ setPanel('feedback'); var f1=S.fbIn.filter(function(x){return x._id==='f1';})[0]; openFbView(f1, true); closeModal('mFbView'); }
@@ -1574,21 +2052,29 @@ function demoAfterLogin(){ if(!DEMO) return; setTimeout(function(){
 /* ───────── 시작 ───────── */
 function boot(){
   var go=function(){
-    Store.watchDoc('settings','main', function(d){ var st=defSettings(); d=d||{}; S.settings=Object.assign(st, d, {labels:Object.assign(st.labels, d.labels||{})}); renderBrand(); if(S.user){ renderCal(); if(isOpen('mDay')) renderDay(); } });
+    Store.watchDoc('meta','admin', function(d){ adminTaken=!!(d&&d.uid); if(adminTaken && authMode==='admin'){ setAuthMode('login'); } });
+    setTimeout(checkAdminHash, 120);
+    Store.watchCol('branches', function(arr){ S.branches=sortBranches(arr); S.branchesLoaded=true; renderBranchSel();
+      if(S.me && isAdmin() && (!S.bid || !curBranch()) && S.branches.length){ S.bid=null; switchBranch(S.branches[0]._id); return; }
+      applyBranch(); if(isOpen('mBranch')) renderBranchList(); if(isOpen('mAdmin')) renderAdmin(); });
     Store.onAuth(function(u){ if(signingUp) return; if(u) afterLogin(u); else { stopWatches(); S.user=null; S.me=null; showLogin(); } });
   };
+  var mk=function(st){ Store=scoped(st); };
   if(CFG.firebase && !DEMO){
     loadScripts(['https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js','https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js','https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js'])
-      .then(function(){ Store=FirebaseStore(CFG.firebase); go(); })
+      .then(function(){ mk(FirebaseStore(CFG.firebase)); go(); })
       .catch(function(){ showLogin(); $('#authMsg').textContent='처음 한 번은 인터넷이 연결된 상태에서 열어 주세요.'; });
   } else {
     Store=DemoStore(!!DEMO); if(DEMO) seedDemo(Store);
+    if(!Object.keys(Store._db.cols.branches||{}).length){ Store._db.cols.branches=sampleBranches(); if(!DEMO) try{ localStorage.setItem('orda-demo-v3', JSON.stringify(Store._db)); }catch(e){} }   // 체험 모드: 임시 지점 7곳
     if(DEMO==='demo-remember'){ try{ localStorage.setItem(REM, JSON.stringify({id:'a', p:btoa('demo1234')})); }catch(e){} }
-    $('#demoNote').hidden=false; $('#demoBadge').hidden=false; go();
+    mk(Store); $('#demoNote').hidden=false; $('#demoBadge').hidden=false; go();
   }
   if(IN_KAKAO || DEMO==='demo-kakao'){ $('#kbarLogin').hidden=false; document.querySelectorAll('.kbtn').forEach(function(b){ b.onclick=openOutside; }); if(DEMO==='demo-kakao') IN_KAKAO=true; }
   if(DEMO==='demo-pending'){ setTimeout(function(){ showLogin(); $('#fId').value='f'; info('가입 승인 요청 중입니다. 원장님이 승인하면 들어올 수 있어요.'); showPop(); }, 80); }
-  if(DEMO==='demo-join'||DEMO==='demo-join-t'){ setTimeout(function(){ setAuthMode('join'); if(DEMO==='demo-join-t') setJoinType('teacher'); else { $('#fName').value='정은정'; $('#fChild').value='키티'; setChildG('f'); } }, 80); }
+  if(DEMO==='demo-admin-taken'){ setTimeout(function(){ openAdminJoin(); }, 200); }
+  if(DEMO==='demo-join-admin'){ setTimeout(function(){ adminTaken=false; setAuthMode('admin'); $('#fName').value='사이트 관리자'; $('#fPw').value='12345678'; $('#fPw2').value='12345678'; }, 80); }
+  if(DEMO==='demo-join'||DEMO==='demo-join-t'){ setTimeout(function(){ setAuthMode('join'); $('#fBranch').value='b1'; if(DEMO==='demo-join-t') setJoinType('teacher'); else { $('#fName').value='정은정'; $('#fChild').value='키티'; setChildG('f'); } }, 80); }
   if('serviceWorker' in navigator && location.protocol==='https:') navigator.serviceWorker.register('sw.js').catch(function(){});
   if(navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(function(){});
 }
